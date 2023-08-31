@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::namespace('App\Http\Controllers\Api')->group(function () {
-  
+
 
 
 Route::get('countries','CitiesController@countries')
@@ -128,14 +128,14 @@ Route::group([
 Route::post('/store', 'ProduitsController@store')->name('produits.produit.store');
  Route::get('/', 'ProduitsController@index')
          ->name('produits.produit.index');
-         
+
     Route::get('/create/{produit}','ProduitsController@create')
          ->name('produits.produit.create')->where('id', '[0-9]+');
     Route::get('/show/{produit}','ProduitsController@show')
          ->name('produits.produit.show')->where('id', '[0-9]+');
     Route::get('/{produit}/edit','ProduitsController@edit')
          ->name('produits.produit.edit')->where('id', '[0-9]+');
-    
+
     Route::put('produit/{produit}', 'ProduitsController@update')
          ->name('produits.produit.update')->where('id', '[0-9]+');
     Route::delete('/produit/{produit}','ProduitsController@destroy')
@@ -154,16 +154,16 @@ Route::post('/store', 'ProduitsController@store')->name('produits.produit.store'
          Route::get('/vuinsta/{produit}','ProduitsController@vuinsta')
          ->name('produits.produit.vuinsta')->where('id', '[0-9]+');
 
-         
+
 });
 
 
  Route::get('/fulter', 'ProduitsController@fulter')
          ->name('fulter');
 
-         
+
      Route::get('/addphoto', 'ProduitsController@addphoto')
-         ->name('addphoto');     
+         ->name('addphoto');
          Route::get('/produituser', 'ProduitsController@indexuser')
          ->name('produituser');
 
@@ -186,3 +186,84 @@ Route::post('/store', 'ProduitsController@store')->name('produits.produit.store'
 
 
 
+ Route::get('command', function () {
+
+
+
+    \Artisan::call('cache:clear');
+    echo \Artisan::output();
+    \Artisan::call('config:clear');
+    echo \Artisan::output();
+    \Artisan::call('route:clear');
+    echo \Artisan::output();
+    \Artisan::call('route:cache');
+    echo \Artisan::output();
+    \Artisan::call('config:cache');
+    echo \Artisan::output();
+    \Artisan::call('view:clear');
+
+
+    echo \Artisan::output();
+    \Artisan::call('migrate');
+
+
+    echo \Artisan::output();
+
+
+});
+use Illuminate\Support\Facades\Http;
+use App\Models\City;
+use GuzzleHttp\Client as ClientHTTP;
+use App\Models\countries;
+Route::get('test', function () {
+    $username = 'botble';
+
+
+    $countriesObjects = countries::where('stat','1')->get();
+    foreach ($countriesObjects as $key => $value) {
+        $countryCode =  $value->iso; // Country code for Qatar
+
+        $url = "http://api.geonames.org/searchJSON?country=$countryCode&maxRows=1000&username=$username";
+
+        $response = file_get_contents($url);
+        $data = json_decode($response, true);
+
+        $cities = [];
+        foreach ($data['geonames'] as $city) {
+
+            // $newcity = new City();
+            // $newcity->name = $city['name'];
+            // $newcity->name_ar = $city['name'];
+            // $newcity->countre_id = $value->id;
+            // $newcity->save();
+        }
+
+    }
+
+
+    dd($data);
+    try{
+        $client2 = new ClientHTTP();
+        $res = $client2->request('GET', 'https://countriesnow.space/api/v0.1/countries/cities', [
+            'headers' => [
+                'Content-Type' => 'application/json',
+            ],
+
+            GuzzleHttp\RequestOptions::JSON => [
+                'country' => 'qatar',
+            ],
+
+            'json' => json_encode(
+                [
+                    'country' => 'qatar',
+                ]
+                ),
+
+        ]);
+        dd($res->getBody());
+    }catch(Exception $exception) {
+    dd($exception->getMessage());
+    }
+
+
+});

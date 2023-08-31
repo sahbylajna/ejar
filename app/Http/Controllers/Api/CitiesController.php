@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\Controller;
-use App\Models\City;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Exception;
@@ -51,7 +51,7 @@ public function countries()
             }
 
             $data = $this->getData($request);
-            
+
             $city = City::create($data);
 
             return $this->successResponse(
@@ -98,7 +98,7 @@ public function countries()
             }
 
             $data = $this->getData($request);
-            
+
             $city = City::findOrFail($id);
             $city->update($data);
 
@@ -132,7 +132,7 @@ public function countries()
             return $this->errorResponse(trans('cities.unexpected_error'));
         }
     }
-    
+
     /**
      * Gets a new validator instance with the defined rules.
      *
@@ -144,26 +144,26 @@ public function countries()
     {
         $rules = [
             'name' => 'string|min:1|max:255|nullable',
-            'name_ar' => 'string|min:1|nullable', 
+            'name_ar' => 'string|min:1|nullable',
         ];
 
         return Validator::make($request->all(), $rules);
     }
 
-    
+
     /**
      * Get the request's data from the request.
      *
-     * @param Illuminate\Http\Request\Request $request 
+     * @param Illuminate\Http\Request\Request $request
      * @return array
      */
     protected function getData(Request $request)
     {
         $rules = [
                 'name' => 'string|min:1|max:255|nullable',
-            'name_ar' => 'string|min:1|nullable', 
+            'name_ar' => 'string|min:1|nullable',
         ];
-        
+
         $data = $request->validate($rules);
 
 

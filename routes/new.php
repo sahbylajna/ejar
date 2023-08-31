@@ -17,8 +17,32 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+
+
+
+
+
 Route::namespace('App\Http\Controllers\Api')->group(function () {
-  
+
+
+
+ // $client2 = new ClientHTTP();
+//     // $res = $client2->request('POST', 'https://animalcert.mme.gov.qa/HIJIN_API/api/data/IMPLC_SUBMIT', [
+//     //     'headers' => $headers,
+//     //     'form_params' => [
+//     //         'DATA' => $data,
+
+//     //         'files' => $importation->files,
+//     //     ],
+
+//     // ]);
+
+
+
+
+
 
 
 Route::get('countries','CitiesController@countries')
@@ -130,13 +154,13 @@ Route::get('/limituser', 'UsersController@produituser')->name('users.user.produi
 Route::post('/store/', 'ProduitsController@store')->name('produits.produit.store');
  Route::get('/', 'ProduitsController@index')
          ->name('produits.produit.index');
-         
+
 
     Route::get('/show/{produit}','ProduitsController@show')
          ->name('produits.produit.show')->where('id', '[0-9]+');
     Route::get('/{produit}/edit','ProduitsController@edit')
          ->name('produits.produit.edit')->where('id', '[0-9]+');
-    
+
     Route::put('produit/{produit}', 'ProduitsController@update')
          ->name('produits.produit.update')->where('id', '[0-9]+');
     Route::delete('/produit/{produit}','ProduitsController@destroy')
@@ -155,16 +179,16 @@ Route::post('/store/', 'ProduitsController@store')->name('produits.produit.store
          Route::get('/vuinsta/{produit}','ProduitsController@vuinsta')
          ->name('produits.produit.vuinsta')->where('id', '[0-9]+');
 
-         
+
 });
 
 
  Route::get('/fulter', 'ProduitsController@fulter')
          ->name('fulter');
 
-         
+
      Route::post('/addphoto', 'ProduitsController@addphoto')
-         ->name('addphoto');     
+         ->name('addphoto');
          Route::get('/produituser', 'ProduitsController@indexuser')
          ->name('produituser');
 
