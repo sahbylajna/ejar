@@ -27,12 +27,12 @@ class ProduitsController extends Controller
      * @return Illuminate\View\View
      */
     public function index()
-    {   
+    {
 
         if(Auth::user()->type == 'superadmin' ){
         $produits = Produit::where('DELETED','off')->where('accepted','Yes')->with('category','user','ville','city')->orderBy('premium', 'DESC')->paginate(5);
         }if(Auth::user()->type == 'admin' ){
-            
+
 $produits=new Collection();
         $produitsall = Produit::where('DELETED','off')->where('accepted','Yes')->with('category','user','ville','city')->orderBy('premium', 'DESC')->paginate(5);
         $citys = City::where('countre_id',Auth::user()->countries->id)->get();
@@ -40,7 +40,7 @@ $produits=new Collection();
             foreach (Produit::where('DELETED','off')->where('city_id',$keys->id)->where('accepted','Yes')->with('category','user','ville','city')->get() as  $va) {
                 # code...
                 $produits->push($va);
-            }            
+            }
         }
         $produits = $produits->paginate(5);
         }elseif(Auth::user()->type == 'campany1' || Auth::user()->type == 'campany2' || Auth::user()->type == 'campany3' || Auth::user()->type == 'campany4' || Auth::user()->type == 'campany5'|| Auth::user()->type == 'campany6' || Auth::user()->type == 'campany7' || Auth::user()->type == 'campany8' || Auth::user()->type == 'campany9' || Auth::user()->type == 'seller'){
@@ -92,7 +92,7 @@ $post =  \DB::table('vus')
                         $datepost[$k-1] = intval($post[$k]);
                         # code...
                     }
-                  
+
 $facebook =  \DB::table('vus')
          ->select(\DB::raw('count(id) as total'), \DB::raw('MONTH(created_at) as month'))
          ->where('vu','facebook')
@@ -173,11 +173,11 @@ $cities = City::where('countre_id',Auth::user()->city->countre_id)->pluck('name'
     public function store(Request $request)
     {
 
-      
+
         try {
-            
+
             $data = $this->getData($request);
-            
+
          $produit=   Produit::create($data);
 
          foreach ($request->photo as $value) {
@@ -201,7 +201,7 @@ $cities = City::where('countre_id',Auth::user()->city->countre_id)->pluck('name'
         return redirect()->route('produits.produit.index')->with('success_message', trans('produits.model_was_added'));
      }
 
-             
+
         } catch (Exception $exception) {
        //  dd($exception);
 
@@ -221,7 +221,7 @@ $cities = City::where('countre_id',Auth::user()->city->countre_id)->pluck('name'
     {
 
         $produit = Produit::with('category','user','ville','city')->findOrFail($id);
-           
+
         $images = Produit_photo::where('produit_id',$id)->get();
 
 $i = 0;
@@ -230,7 +230,7 @@ $v =0;
 
             $imageExtensions = ['jpg', 'jpeg', 'gif', 'png', 'bmp', 'svg', 'svgz', 'cgm', 'djv', 'djvu', 'ico', 'ief','jpe', 'pbm', 'pgm', 'pnm', 'ppm', 'ras', 'rgb', 'tif', 'tiff', 'wbmp', 'xbm', 'xpm', 'xwd'];
 
-$explodeImage = explode('.', url('/ejar/public/images/' . $value->photo));
+$explodeImage = explode('.', url('images/' . $value->photo));
 $extension = end($explodeImage);
  //  dd( );
 if(in_array($extension, $imageExtensions))
@@ -243,9 +243,9 @@ if(in_array($extension, $imageExtensions))
   $value->type = 'video';
   $value->v = $v;
   $v=$v+1;
-    // Is not image 
+    // Is not image
 }
-        
+
         }
         return view('produits.showp', compact('produit','images'));
     }
@@ -253,7 +253,7 @@ if(in_array($extension, $imageExtensions))
 
  public function addphoto($id)
     {
-     
+
         $produit = Produit::findOrFail($id);
         $images = Produit_photo::where('produit_id',$id)->get();
 $i = 0;
@@ -262,7 +262,7 @@ $v =0;
 
             $imageExtensions = ['jpg', 'jpeg', 'gif', 'png', 'bmp', 'svg', 'svgz', 'cgm', 'djv', 'djvu', 'ico', 'ief','jpe', 'pbm', 'pgm', 'pnm', 'ppm', 'ras', 'rgb', 'tif', 'tiff', 'wbmp', 'xbm', 'xpm', 'xwd'];
 
-$explodeImage = explode('.', url('/ejar/public/images/' . $value->photo));
+$explodeImage = explode('.', url('images/' . $value->photo));
 $extension = end($explodeImage);
  //  dd( );
 if(in_array($extension, $imageExtensions))
@@ -275,9 +275,9 @@ if(in_array($extension, $imageExtensions))
   $value->type = 'video';
   $value->v = $v;
   $v=$v+1;
-    // Is not image 
+    // Is not image
 }
-        
+
         }
 
         return view('produits.photo', compact('produit','images'));
@@ -292,7 +292,7 @@ if(in_array($extension, $imageExtensions))
 
         try {
              foreach  ($request->file('fileimage') as $imagefile) {
-          
+
        $path = Storage::disk('images')->put('produit', $imagefile);
     // Save thumb
     $img = InterventionImage::make($imagefile)->widen(100);
@@ -305,7 +305,7 @@ if(in_array($extension, $imageExtensions))
         } catch (Exception $e) {
           //  dd($e);
         }
-     
+
      return redirect()->route('produits.produit.addphoto',$request->produit);
 
     }
@@ -314,18 +314,18 @@ if(in_array($extension, $imageExtensions))
 
      public function addvedio(Request $request)
     {
-       
+
 
         if($request->file('file')){
 
             // $file = $request->file('file');
             // $filename = $file->getClientOriginalName();
-            // $path = '/images/';
+            // $path = 'images/';
             $vedio = Storage::disk('images')->put('produit', $request->file('file'));
              DB::insert('insert into produit_photos (produit_id, photo) values (?, ?)', [$request->produit, $vedio ]);
 
         }
-       
+
     return redirect()->route('produits.produit.addphoto',$request->produit);
 
     }
@@ -336,7 +336,7 @@ if(in_array($extension, $imageExtensions))
 
 
   DB::table('produit_photos')->where('id', $request->id)->delete();
-   
+
 return($request);
 
     }
@@ -382,7 +382,7 @@ public function refused(Request $request,$id)
     {
         $produit = Produit::findOrFail($id);
         $vips = Vip::where('Produit_id',$produit->id)->get();
-      
+
         foreach ($vips as $item) {
             $item->day = Carbon::parse(now())->diffInDays($item->dateend, false);
 
@@ -391,8 +391,8 @@ public function refused(Request $request,$id)
 
         $type = "produit";
  return view('produits.vip', compact('produit','vips','type'));
-        
-         
+
+
     }
 
 
@@ -429,9 +429,9 @@ $idd = $produit->category_id;
     public function update($id, Request $request)
     {
         try {
-            
+
             $data = $this->getData($request);
-            
+
             $produit = Produit::findOrFail($id);
             $produit->update($data);
 
@@ -441,7 +441,7 @@ $idd = $produit->category_id;
 
             return back()->withInput()
                 ->withErrors(['unexpected_error' => trans('produits.unexpected_error')]);
-        }        
+        }
     }
 
     /**
@@ -476,11 +476,11 @@ $idd = $produit->category_id;
         }
     }
 
-    
+
     /**
      * Get the request's data from the request.
      *
-     * @param Illuminate\Http\Request\Request $request 
+     * @param Illuminate\Http\Request\Request $request
      * @return array
      */
     protected function getData(Request $request)
@@ -488,7 +488,7 @@ $idd = $produit->category_id;
         $rules = [
                 'name_ar' => 'string|min:1',
             'name' => 'string|min:1|max:255',
-          
+
             'discription_ar' => 'string|min:1',
             'discription' => 'string|min:1',
             'price' => 'string|min:1',
@@ -526,22 +526,22 @@ $idd = $produit->category_id;
             'imprimerie' => 'string|min:1|nullable',
             'DELETED' => 'string|min:1|nullable',
             'accepted' => 'string|min:1|nullable',
-            'furnished' => 'string|min:1|nullable', 
+            'furnished' => 'string|min:1|nullable',
               'Number_of_doors' => 'numeric|nullable',
             'Height' => 'string|min:1|nullable',
             'On_a_paved_road' => 'string|min:1|nullable',
             'metro' => 'string|min:1|nullable',
-            'family' => 'string|min:1|nullable', 
+            'family' => 'string|min:1|nullable',
         ];
-        
+
         $data = $request->validate($rules);
         if ($request->has('custom_delete_photo')) {
             $data['photo'] = null;
         }
-        
+
         $data['category_id'] = $request->category;
         $data['user_id'] = Auth()->user()->id;
-        
+
         $data['DELETED'] = "off";
 
         if($request->rent_sale == null)
@@ -597,7 +597,7 @@ $idd = $produit->category_id;
              $data['family'] = 1;
         }
 
-     
+
 
       if($request->On_a_paved_road == null)
         {$data['On_a_paved_road'] = "off";}
@@ -607,8 +607,8 @@ $idd = $produit->category_id;
       $data['vufb']=0;
       $data['vuweb']=0;
       $data['clique_whatsapp']=0;
- 
-        
+
+
      if(Auth::user()->type == "user"){
         $data['accepted'] = "off";
      }else{
@@ -620,7 +620,7 @@ $idd = $produit->category_id;
 
 
     public function notconfermid()
-    {   
+    {
 if(Auth::user()->type == 'superadmin' ){
         $produits = Produit::where('DELETED','off')->where('accepted','off')->with('category','user','ville','city')->paginate(5);
         }elseif(Auth::user()->type == 'admin' ){
@@ -629,8 +629,8 @@ if(Auth::user()->type == 'superadmin' ){
             $produits = Produit::where('DELETED','off')->where('accepted','off')->where('user_id',Auth::user()->id)->with('category','user','ville','city')->paginate(20);
         }
 
-     
-      
+
+
 
 
 $cities = City::pluck('name_ar','id')->all();
@@ -664,12 +664,12 @@ if($vip2){
 
 
      public function refusedlist()
-    {   
+    {
 
  if(Auth::user()->type == 'superadmin' ){
         $produits = Produit::where('DELETED','off')->where('accepted','refused')->with('category','user','ville','city')->paginate(5);
         }if(Auth::user()->type == 'admin' ){
-            
+
 $produits=new Collection();
         $produitsall = Produit::where('DELETED','off')->where('accepted','refused')->with('category','user','ville','city')->paginate(5);
         $citys = City::where('countre_id',Auth::user()->countries->id)->get();
@@ -677,14 +677,14 @@ $produits=new Collection();
             foreach (Produit::where('DELETED','off')->where('city_id',$keys->id)->where('accepted','refused')->with('category','user','ville','city')->get() as  $va) {
                 # code...
                 $produits->push($va);
-            }            
+            }
         }
         $produits = $produits->paginate(5);
         }elseif(Auth::user()->type == 'campany1' || Auth::user()->type == 'campany2' || Auth::user()->type == 'campany3' || Auth::user()->type == 'campany4' || Auth::user()->type == 'campany5'|| Auth::user()->type == 'campany6' || Auth::user()->type == 'seller'){
             $produits = Produit::where('DELETED','off')->where('accepted','Yes')->where('user_id',Auth::user()->id)->with('category','user','ville','city')->paginate(20);
         }
-     
-      
+
+
 
 
 $cities = City::pluck('name_ar','id')->all();
@@ -704,11 +704,11 @@ if($vip2){
 
         return view('produits.refused', compact('produits','cities'));
     }
- 
 
 
 
-    
+
+
 
    public function cherche(Request $search)
     {    $produit = Produit::where('DELETED','off')->where('accepted','Yes')->where('name','like','%'.$search->find.'%')->orWhere('name_ar','like','%'.$search->find.'%')->orWhere('discription_ar','like','%'.$search->find.'%')->orWhere('discription','like','%'.$search->find.'%')->orWhere('name_ar','like','%'.$search->find.'%')->orWhere('id','like','%'.$search->find.'%')->orWhere('ville_id',$search->ville_id)->orWhere('city_id',$search->city_id)->with('category','user','ville','city')->get();
@@ -759,7 +759,7 @@ $post =  \DB::table('vus')
                         $datepost[$k-1] = $post[$k];
                         # code...
                     }
-                  
+
 $facebook =  \DB::table('vus')
          ->select(\DB::raw('count(id) as total'), \DB::raw('MONTH(created_at) as month'))
          ->where('vu','facebook')
@@ -788,7 +788,7 @@ $values->datefb = $datefb;
 $values->dateinstainstagrame = $dateinstainstagrame;
 $values->datepost = $datepost;
 $values->datewhatsapp = $datewhatsapp;
-        } 
+        }
         }elseif(Auth::user()->type == 'admin' ){
        foreach ($produit as  $values) {
           if($values->accepted =="Yes"){
@@ -834,7 +834,7 @@ $post =  \DB::table('vus')
                         $datepost[$k-1] = $post[$k];
                         # code...
                     }
-                  
+
 $facebook =  \DB::table('vus')
          ->select(\DB::raw('count(id) as total'), \DB::raw('MONTH(created_at) as month'))
          ->where('vu','facebook')
@@ -863,21 +863,21 @@ $values->datefb = $datefb;
 $values->dateinstainstagrame = $dateinstainstagrame;
 $values->datepost = $datepost;
 $values->datewhatsapp = $datewhatsapp;
-        } 
+        }
         }elseif(Auth::user()->type == 'campany1' || Auth::user()->type == 'campany2' || Auth::user()->type == 'campany3' || Auth::user()->type == 'campany4' || Auth::user()->type == 'campany5' || Auth::user()->type == 'seller' || Auth::user()->type == 'seller'){
 
            foreach ($produit as  $values) {
           if($values->accepted =="Yes" && $values->user_id ==Auth::user()->id){
              $produits->add($values);
           }
-        } 
-          
-         
+        }
+
+
         }
 
 
         foreach ($produits as $key => $value) {
-          
+
 
   $dateweb=  array(0,0,0,0,0,0,0,0,0,0,0,0 );
              $datefb=  array(0,0,0,0,0,0,0,0,0,0,0,0 );
@@ -916,7 +916,7 @@ $post =  \DB::table('vus')
                         $datepost[$k-1] = $post[$k];
                         # code...
                     }
-                  
+
 $facebook =  \DB::table('vus')
          ->select(\DB::raw('count(id) as total'), \DB::raw('MONTH(created_at) as month'))
          ->where('vu','facebook')
@@ -960,26 +960,26 @@ if($vip2){
 }
 }
 
-     
+
       return $produits;
 }
 
     public function produitsvip1()
-    {   
+    {
 
               $produits = collect(new Produit);
-$vipget =Vip::where('vip',1)->get(); 
+$vipget =Vip::where('vip',1)->get();
         if(Auth::user()->type == 'admin' || Auth::user()->type == 'superadmin' ){
           foreach ($vipget as $key => $values) {
             $produit = Produit::where('id',$values->Produit_id)->where('DELETED','off')->where('accepted','Yes')->with('category','user','ville','city')->first();
             $produits->add($produit);
           }
-      
+
         }elseif(Auth::user()->type == 'campany1' || Auth::user()->type == 'campany2' || Auth::user()->type == 'campany3' || Auth::user()->type == 'campany4' || Auth::user()->type == 'campany5' || Auth::user()->type == 'seller'){
        foreach ($vipget as $key => $values) {
             $produit = Produit::where('id',$values->Produit_id)->where('DELETED','off')->where('accepted','Yes')->where('user_id',Auth::user()->id)->with('category','user','ville','city')->first();
             if($produit){ $produits->add( $produit);}
-           
+
           }
         }
 
@@ -1007,17 +1007,17 @@ if($vip2){
     }
 
     public function produitsvip2()
-    {   
+    {
       $produits = collect();
-$vipget =Vip::where('vip',2)->get(); 
+$vipget =Vip::where('vip',2)->get();
         if(Auth::user()->type == 'admin'  || Auth::user()->type == 'superadmin' ){
           foreach ($vipget as $key => $values) {
             $produit = Produit::where('id',$values->Produit_id)->where('DELETED','off')->where('accepted','Yes')->with('category','user','ville','city')->first();
             $produits->add($produit);
           }
-      
+
         }elseif(Auth::user()->type == 'campany1' || Auth::user()->type == 'campany2' || Auth::user()->type == 'campany3' || Auth::user()->type == 'campany4' || Auth::user()->type == 'campany5' || Auth::user()->type == 'seller'){
-           foreach ($vipget as $key => $values) {      
+           foreach ($vipget as $key => $values) {
             $produit = Produit::where('id',$values->Produit_id)->where('DELETED','off')->where('accepted','Yes')->where('user_id',Auth::user()->id)->with('category','user','ville','city')->first();
            if($produit){ $produits->add( $produit);}
           }
@@ -1048,21 +1048,21 @@ if($vip2){
 
 
         public function produitsvip3()
-    {   
+    {
 
               $produits = collect(new Produit);
-$vipget =Vip::where('vip',3)->get(); 
+$vipget =Vip::where('vip',3)->get();
         if(Auth::user()->type == 'admin' || Auth::user()->type == 'superadmin' ){
           foreach ($vipget as $key => $values) {
             $produit = Produit::where('id',$values->Produit_id)->where('DELETED','off')->where('accepted','Yes')->with('category','user','ville','city')->first();
             $produits->add($produit);
           }
-      
+
         }elseif(Auth::user()->type == 'campany1' || Auth::user()->type == 'campany2' || Auth::user()->type == 'campany3' || Auth::user()->type == 'campany4' || Auth::user()->type == 'campany5' || Auth::user()->type == 'seller'){
        foreach ($vipget as $key => $values) {
             $produit = Produit::where('id',$values->Produit_id)->where('DELETED','off')->where('accepted','Yes')->where('user_id',Auth::user()->id)->with('category','user','ville','city')->first();
             if($produit){ $produits->add( $produit);}
-           
+
           }
         }
 
@@ -1098,13 +1098,13 @@ if($vip3){
 
 
   public function cherchenot(Request $search)
-    {   
+    {
 
 
   if(Auth::user()->type == 'admin'  || Auth::user()->type == 'superadmin'  ){
        $produit = Produit::where('DELETED','off')->where('accepted','off')->where('name','like','%'.$search->find.'%')->orWhere('name_ar','like','%'.$search->find.'%')->orWhere('discription_ar','like','%'.$search->find.'%')->orWhere('discription','like','%'.$search->find.'%')->orWhere('name_ar','like','%'.$search->find.'%')->orWhere('id','like','%'.$search->find.'%')->orWhere('ville_id',$search->ville_id)->orWhere('city_id',$search->city_id)->with('category','user','ville','city')->get();
         }elseif(Auth::user()->type == 'campany1' || Auth::user()->type == 'campany2' || Auth::user()->type == 'campany3' || Auth::user()->type == 'campany4' || Auth::user()->type == 'campany5' || Auth::user()->type == 'seller'){
-          
+
             $produit = Produit::where('user_id',Auth::user()->id)->where('accepted','off')->where('DELETED','off')->where('name','like','%'.$search->find.'%')->orWhere('name_ar','like','%'.$search->find.'%')->orWhere('discription_ar','like','%'.$search->find.'%')->orWhere('discription','like','%'.$search->find.'%')->orWhere('name_ar','like','%'.$search->find.'%')->orWhere('id','like','%'.$search->find.'%')->orWhere('ville_id',$search->ville_id)->orWhere('city_id',$search->city_id)->with('category','user','ville','city')->get();
         }
  $produits = collect();
@@ -1112,8 +1112,8 @@ if($vip3){
           if($values->accepted =="off"){
              $produits->add($values);
           }
-        } 
-        
+        }
+
         foreach ($produits as $key => $value) {
 
 
@@ -1130,7 +1130,7 @@ if($vip2){
 }
 }
 
-     
+
       return $produits;
 }
 
@@ -1140,13 +1140,13 @@ if($vip2){
 
 
  public function chercheref(Request $search)
-    {   
+    {
 
 
   if(Auth::user()->type == 'admin'  || Auth::user()->type == 'superadmin'  ){
        $produit = Produit::where('DELETED','off')->where('accepted','refused')->where('name','like','%'.$search->find.'%')->orWhere('name_ar','like','%'.$search->find.'%')->orWhere('discription_ar','like','%'.$search->find.'%')->orWhere('discription','like','%'.$search->find.'%')->orWhere('name_ar','like','%'.$search->find.'%')->orWhere('id','like','%'.$search->find.'%')->orWhere('ville_id',$search->ville_id)->orWhere('city_id',$search->city_id)->with('category','user','ville','city')->get();
         }elseif(Auth::user()->type == 'campany1' || Auth::user()->type == 'campany2' || Auth::user()->type == 'campany3'|| Auth::user()->type == 'campany4' || Auth::user()->type == 'campany5' || Auth::user()->type == 'seller'){
-          
+
             $produit = Produit::where('user_id',Auth::user()->id)->where('accepted','refused')->where('DELETED','off')->where('name','like','%'.$search->find.'%')->orWhere('name_ar','like','%'.$search->find.'%')->orWhere('discription_ar','like','%'.$search->find.'%')->orWhere('discription','like','%'.$search->find.'%')->orWhere('name_ar','like','%'.$search->find.'%')->orWhere('id','like','%'.$search->find.'%')->orWhere('ville_id',$search->ville_id)->orWhere('city_id',$search->city_id)->with('category','user','ville','city')->get();
         }
  $produits = collect();
@@ -1154,8 +1154,8 @@ if($vip2){
           if($values->accepted =="refused"){
              $produits->add($values);
           }
-        } 
-        
+        }
+
         foreach ($produits as $key => $value) {
 
 
@@ -1172,7 +1172,7 @@ if($vip2){
 }
 }
 
-     
+
       return $produits;
 }
 
@@ -1183,7 +1183,7 @@ if($vip2){
 
  public function premium(Request $request)
     {
-       
+
         $produit = Produit::findOrFail($request->id);
         if ($produit->premium == 0) {
 
@@ -1196,5 +1196,5 @@ if($vip2){
             return "delete";
         }
     }
-  
+
 }

@@ -39,7 +39,7 @@
             </div>
 
         </div>
-        
+
         @if(count($users) == 0)
             <div class="panel-body text-center">
                 <h4>No Users Available.</h4>
@@ -53,13 +53,13 @@
                         <tr>
                            <th>{{ trans('categories.photo') }}</th>
                            <th>{{ trans('user.name') }}</th>
-                          
+
                             <th>{{ trans('user.user_name') }}</th>
                             <th>{{ trans('user.email') }}</th>
-                         
+
                             <th>{{ trans('user.phone') }}</th>
-                          
-                         
+
+
 
                             <th>{{ trans('general.action')}}</th>
                         </tr>
@@ -67,15 +67,15 @@
                     <tbody>
                     @foreach($users as $user)
                         <tr>
-                            <td><img style="    width: 100px!important; height: 100px!important;border-radius: 50%;" src="{{ asset('/ejar/public/images/' . $user->photo) }}"></td>
+                            <td><img style="    width: 100px!important; height: 100px!important;border-radius: 50%;" src="{{ asset('images/' . $user->photo) }}"></td>
                             <td>{{ $user->name }}</td>
-                             
+
                             <td>{{ $user->user_name }}</td>
                             <td>{{ $user->email }}</td>
                             <td style="text-align: end;
     direction: ltr;"> {{ $user->phone }}</td>
-                          
-                        
+
+
                             <td>
 
                                 <form method="POST" action="{!! route('users.user.destroy', $user->id) !!}" accept-charset="UTF-8">
@@ -99,7 +99,7 @@
                                     </div>
 
                                 </form>
-                                
+
                             </td>
                         </tr>
                     @endforeach
@@ -112,9 +112,9 @@
         <div class="panel-footer">
             {!! $users->render() !!}
         </div>
-        
+
         @endif
-    
+
     </div>
 @endsection
 

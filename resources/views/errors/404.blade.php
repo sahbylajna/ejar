@@ -28,7 +28,7 @@
     <div class="flex-col-c p-t-160 p-b-215 respon1">
       <div class="wrappic1">
         <a href="#">
-          <img src="https://www.ejar.qa/images/LOGO.png" alt="IMG">
+          <img src="https://www.ejar.qaimages/LOGO.png" alt="IMG">
         </a>
       </div>
 

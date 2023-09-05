@@ -18,16 +18,11 @@ class SlidersController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->countre_id != null){
-            $sliders = Slider::where('countre_id',$request->countre_id)->get();
-        }else{
-            $sliders = Slider::where('countre_id',174)->get();
-        }
-        
-        
+
+        $sliders = Slider::all();
 
 foreach ($sliders as $key => $value) {
-            $value->photo = 'ejar/public/images/'.$value->photo;
+            $value->photo = 'images/'.$value->photo;
         }
 
         return response()->json($sliders);
@@ -51,7 +46,7 @@ foreach ($sliders as $key => $value) {
             }
 
             $data = $this->getData($request);
-            
+
             $slider = Slider::create($data);
 
             return $this->successResponse(
@@ -98,7 +93,7 @@ foreach ($sliders as $key => $value) {
             }
 
             $data = $this->getData($request);
-            
+
             $slider = Slider::findOrFail($id);
             $slider->update($data);
 
@@ -132,7 +127,7 @@ foreach ($sliders as $key => $value) {
             return $this->errorResponse(trans('sliders.unexpected_error'));
         }
     }
-    
+
     /**
      * Gets a new validator instance with the defined rules.
      *
@@ -146,17 +141,17 @@ foreach ($sliders as $key => $value) {
             'link' => 'string|min:1|nullable',
             'photo' => ['file','nullable'],
             'Date_start' => 'date_format:j/n/Y|nullable',
-            'Date_end' => 'date_format:j/n/Y|nullable', 
+            'Date_end' => 'date_format:j/n/Y|nullable',
         ];
 
         return Validator::make($request->all(), $rules);
     }
 
-    
+
     /**
      * Get the request's data from the request.
      *
-     * @param Illuminate\Http\Request\Request $request 
+     * @param Illuminate\Http\Request\Request $request
      * @return array
      */
     protected function getData(Request $request)
@@ -165,9 +160,9 @@ foreach ($sliders as $key => $value) {
                 'link' => 'string|min:1|nullable',
             'photo' => ['file','nullable'],
             'Date_start' => 'date_format:j/n/Y|nullable',
-            'Date_end' => 'date_format:j/n/Y|nullable', 
+            'Date_end' => 'date_format:j/n/Y|nullable',
         ];
-        
+
         $data = $request->validate($rules);
         if ($request->has('custom_delete_photo')) {
             $data['photo'] = null;
@@ -178,7 +173,7 @@ foreach ($sliders as $key => $value) {
 
         return $data;
     }
-  
+
     /**
      * Moves the attached file to the server.
      *

@@ -278,7 +278,8 @@ class DatabaseSeeder extends Seeder
 
         $user = new \App\Models\User();
 $user->name = 'John Doe';
-$user->user_name = 'John Doe';
+$user->type = 'super admin';
+$user->user_name = 'super admin';
 $user->email = 'admin@admin.com';
 $user->password =Hash::make('password');
 $user->campany_id = '0'; // Laravel will hash this automatically

@@ -3,7 +3,7 @@
 @section('css')
 <style type="text/css">
   .header-hero {
- background-image: url({{ asset('/ejar/public/images/'.$produit->photo)}}); 
+ background-image: url({{ asset('images/'.$produit->photo)}});
  }
 </style>
 @endsection
@@ -17,7 +17,7 @@
 	<div class="col-sm-8 col-sm-offset-2 col-xs-12">
 	<div class="hp-listing-category__header">
 
-<h1 class="hp-listing-category__name">{{ $produit->name }} 
+<h1 class="hp-listing-category__name">{{ $produit->name }}
 </h1>
 <div class="hp-listing-category__description">{{ $produit->name_ar }}
 </div>
@@ -65,7 +65,7 @@
 </div>
 
 <time class="hp-listing__created-date hp-listing__date hp-meta" datetime="2019-06-30 11:32:04">
-Added on {{$produit->created_at}} 
+Added on {{$produit->created_at}}
 </time>
 
 </div>
@@ -92,10 +92,10 @@ Added on {{$produit->created_at}}
 </div>
 <div class="hp-listing__images" data-component="carousel-slider">
 
-<img src="{{ asset('/ejar/public/images/'.$produit->photo)}}" data-src="" alt="{{$produit->category->name}} {{$produit->category->name_ar}}" loading="lazy">
+<img src="{{ asset('images/'.$produit->photo)}}" data-src="" alt="{{$produit->category->name}} {{$produit->category->name_ar}}" loading="lazy">
 @foreach($images as $image)
 
-<img src="{{ asset('/ejar/public/images/'.$image->photo)}}" data-src="" alt="{{$produit->category->name}} {{$produit->category->name_ar}}" loading="lazy">
+<img src="{{ asset('images/'.$image->photo)}}" data-src="" alt="{{$produit->category->name}} {{$produit->category->name_ar}}" loading="lazy">
 
 @endforeach
 </div>

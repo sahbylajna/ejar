@@ -2,7 +2,7 @@
 @section('css')
 
 <style type="text/css">
- 
+
 
 .ratings i {
     font-size: 16px;
@@ -67,7 +67,7 @@ h5 {
         <div class="alert alert-success">
             <span class="glyphicon glyphicon-ok"></span>
             {!! session('success_message') !!}
-           
+
             <button type="button" class="close" data-dismiss="alert" aria-label="close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -77,12 +77,12 @@ h5 {
 
 
 
-       
+
      <div class="row">
                 <div class="col-lg-12">
                     <h1  class="page-header ">{{ trans('produits.model_plural') }}</h1>
-                    <div class="col-lg-3" ><input type="text" name="find" id="find" style="border-color: teal !important;border-radius: 33px" class="form-control "> 
-                      
+                    <div class="col-lg-3" ><input type="text" name="find" id="find" style="border-color: teal !important;border-radius: 33px" class="form-control ">
+
                         </div>
                      <div class="col-lg-6" >
                         <select class="form-control col-lg-6" id="city_id" name="city_id" style="border-color: teal !important;border-radius: 33px">
@@ -93,7 +93,7 @@ h5 {
                         </select>
                         <select class="form-control col-lg-6" id="ville_id" name="ville_id" style="border-color: teal !important;border-radius: 33px">
                             <option>{{ trans('produits.ville_id__placeholder') }}</option>
-                           
+
                         </select>
                       </div>
 
@@ -112,21 +112,21 @@ h5 {
         <div class="col-md-10" id="produits">
                 @foreach($produits as $produit)
             <div class="row p-2 bg-white border rounded mt-2">
-                <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="{{ asset('/ejar/public/images/' . $produit->photo) }}"></div>
+                <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="{{ asset('images/' . $produit->photo) }}"></div>
                 <div class="col-md-6 mt-1">
                     <h5>{{ $produit->name_ar }} / {{ $produit->name }}</h5>
                     <div class="d-flex flex-row">
                         <div class="ratings mr-2">
-                           
+
                         </div>
-                            
+
                             <span>{{ optional($produit->category)->name }}</span>
                     </div>
                     <div class="mt-1 mb-1 spec-1">
                     </div>
                     <div class="mt-1 mb-1 spec-1">
                         <span>{{ optional($produit->user)->name }}</span>
-                      
+
                 </div>
                     <p class="text-justify text-truncate para mb-0">{{ $produit->discription_ar }}<br><br></p>
                 </div>
@@ -158,11 +158,11 @@ h5 {
                                         </a>
                                         @endif
 
-                                        
+
                                         <button id="vip{{$produit->id}}"  type="button" onclick="vip('{{$produit->id}} ','1','{{$produit->vip1_datestart}}','{{$produit->vip1_dateend}}')" class="btn btn-warning" title="{{ trans('produits.accepted') }}">
                                             Vip1
                                         </button>
-                                        
+
                                            @endif
                                         @if($produit->DELETED == "off")
                                         <button type="submit" class="btn btn-danger" title="{{ trans('produits.delete') }}" onclick="return confirm(&quot;{{ trans('produits.confirm_delete') }}&quot;)">
@@ -170,7 +170,7 @@ h5 {
                                         </button>
                                         @endif
 
-                                       
+
                                     </div>
 
                                 </form>
@@ -178,20 +178,20 @@ h5 {
                 </div>
             </div>
              @endforeach
-      
+
         </div>
     </div>
 </div>
 
 
-          
+
 
             </div>
         </div>
 
-      
+
         @endif
-    
+
     </div>
 
 <!-- Modal -->
@@ -207,7 +207,7 @@ h5 {
       <div class="modal-body row">
         <input type="hidden" name="vip" id="vip">
         <input type="hidden" name="produit" id="produit">
- 
+
 
         <div class="form-group col-md-12 {{ $errors->has('date') ? 'has-error' : '' }}">
     <label for="date" class="col-md-2 control-label">{{ trans('vips.date') }}</label>
@@ -249,21 +249,21 @@ h5 {
     $(document).ready(function() {
 
         $('#city_id').change(function(){
-        $.get("{{ url('villectiy')}}", 
-        { option: $(this).val() }, 
+        $.get("{{ url('villectiy')}}",
+        { option: $(this).val() },
         function(data) {
-            $('#ville_id').empty(); 
+            $('#ville_id').empty();
 
             $.each(data, function(key, element) {
                 $('#ville_id').append("<option value='" + element.id + "'>" + element.name_ar + "</option>");
             });
         });
 
-        
+
     });
 
        });
-     
+
 
 function vip(id,vip,start,end){
 $('#vip').val();
@@ -284,10 +284,10 @@ if(!start || start=='undefined'){
 
 }
 function closemodal(){
-    
+
   $('#myModal').hide();
-  
- 
+
+
 }
 
 
@@ -295,14 +295,14 @@ function save(){
     $('#myModal').hide();
 var vip = $('#vip').val();
 var id = $('#produit').val();
-       $.get("{{ url('vip')}}", 
+       $.get("{{ url('vip')}}",
         { vip: vip,
            Produit_id:id,
            date:$('#date').val(),
            dateend:$('#dateend').val(),
-         }, 
+         },
         function(data) {
-          
+
            if(data == "success"){
                window.setTimeout(function(){location.reload()},2000);
            }
@@ -314,14 +314,14 @@ function deleted(){
     $('#myModal').hide();
 var vip = $('#vip').val();
 var id = $('#produit').val();
-       $.get("{{ url('vip/deleted')}}", 
+       $.get("{{ url('vip/deleted')}}",
         { vip: vip,
            Produit_id:id,
            date:$('#date').val(),
            dateend:$('#dateend').val(),
-         }, 
+         },
         function(data) {
-          
+
            if(data == "success"){
                window.setTimeout(function(){location.reload()},2000);
            }
@@ -332,32 +332,32 @@ var id = $('#produit').val();
 
 
 function cherche(){
-   
 
-       $.get("{{ url('cherche')}}", 
-        { 
+
+       $.get("{{ url('cherche')}}",
+        {
            city_id:$('#city_id').val(),
            ville_id:$('#ville_id').val(),
            find:$('#find').val(),
-         }, 
+         },
         function(data) {
-            
-               $('#produits').empty(); 
-               $('#produitsfooter').empty(); 
-               
-    var type = "{{ Auth::user()->type }}";       
+
+               $('#produits').empty();
+               $('#produitsfooter').empty();
+
+    var type = "{{ Auth::user()->type }}";
 
            $.each(data, function(key, element) {
-              console.log(element.category.name);  
-            
-           
-var html = "<div class='row p-2 bg-white border rounded mt-2'><div class='col-md-3 mt-1'><img class='img-fluid img-responsive rounded product-image' src='{{ asset('/ejar/public/images/') }}/"+element.photo+"'></div><div class='col-md-6 mt-1'>    <h5>"+element.name_ar +" / "+element.name +"</h5>    <div class='d-flex flex-row'><div class='ratings mr-2'></div><span>"+element.category.name +"</span>    </div>    <div class='mt-1 mb-1 spec-1'>    </div>    <div class='mt-1 mb-1 spec-1'><span>"+element.user.name +"</span>      </div>    <p class='text-justify text-truncate para mb-0'>"+element.discription_ar +"<br><br></p></div><div class='align-items-center align-content-center col-md-3 border-left mt-1'>    <div class='d-flex flex-row align-items-center'>        <h4 class='mr-1'>"+element.price +"</h4>    </div>" ;
+              console.log(element.category.name);
+
+
+var html = "<div class='row p-2 bg-white border rounded mt-2'><div class='col-md-3 mt-1'><img class='img-fluid img-responsive rounded product-image' src='{{ asset('images/') }}/"+element.photo+"'></div><div class='col-md-6 mt-1'>    <h5>"+element.name_ar +" / "+element.name +"</h5>    <div class='d-flex flex-row'><div class='ratings mr-2'></div><span>"+element.category.name +"</span>    </div>    <div class='mt-1 mb-1 spec-1'>    </div>    <div class='mt-1 mb-1 spec-1'><span>"+element.user.name +"</span>      </div>    <p class='text-justify text-truncate para mb-0'>"+element.discription_ar +"<br><br></p></div><div class='align-items-center align-content-center col-md-3 border-left mt-1'>    <div class='d-flex flex-row align-items-center'>        <h4 class='mr-1'>"+element.price +"</h4>    </div>" ;
 
                 let id = element.id;
                 if(element.rent_sale== 'on'){
                      html = html + " <h6 class='text-success'>الإيجار</h6>"
 
-                 
+
                        }else{
                        html= html + " <h6 class='text-success'>بيع</h6>";
                     }
@@ -366,25 +366,25 @@ var html = "<div class='row p-2 bg-white border rounded mt-2'><div class='col-md
 
 
 if(type  == 'admin'){
-  
+
         html = html + " <button   type='button' onclick=\"vip("+element.id+",1,'"+element.vip1_datestart+"','"+element.vip1_dateend+"')\" class='btn btn-warning' title='{{ trans('produits.accepted') }}'>Vip1</button> ";
 
- 
+
 }
 
 
  html = html + "</div></form>    </div></div>  </div>";
-                   
+
 
                      $('#produits').append(html);
 
 
-                               
-                            
-             
-           
+
+
+
+
             });
-         
+
         });
 
 }
@@ -392,7 +392,7 @@ if(type  == 'admin'){
 
  </script>
 
-    
 
 
-@endsection 
+
+@endsection

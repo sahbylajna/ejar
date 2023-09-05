@@ -32,10 +32,10 @@
         Ejar - ايجار
         <br>
         <a target="_blank" href="{{ $settingsObject->Link_ios }}">
-       <img src="https://www.ejar.qa/images/pngegg.png" style="width: 332px;" alt="IMG"> 
+       <img src="https://www.ejar.qaimages/pngegg.png" style="width: 332px;" alt="IMG"> 
    </a>
    <a target="_blank" href="{{ $settingsObject->Link_android }}">
-        <img src="https://www.ejar.qa/images/pngeggg.png" style="width: 332px;" alt="IMG">
+        <img src="https://www.ejar.qaimages/pngeggg.png" style="width: 332px;" alt="IMG">
     </a>
       </h3>
 

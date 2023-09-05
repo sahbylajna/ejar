@@ -2,7 +2,7 @@
 @section('css')
 
 <style type="text/css">
- 
+
 
 .ratings i {
     font-size: 16px;
@@ -68,7 +68,7 @@ h5 {
         <div class="alert alert-success">
             <span class="glyphicon glyphicon-ok"></span>
             {!! session('success_message') !!}
-           
+
             <button type="button" class="close" data-dismiss="alert" aria-label="close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -78,12 +78,12 @@ h5 {
 
 
 
-       
+
      <div class="row">
                    <div class="col-lg-12">
                     <h1  class="page-header ">{{ trans('produits.model_plural') }}</h1>
-                    <div class="col-lg-3" ><input type="text" name="find" id="find" style="border-color: teal !important;border-radius: 33px" class="form-control "> 
-                      
+                    <div class="col-lg-3" ><input type="text" name="find" id="find" style="border-color: teal !important;border-radius: 33px" class="form-control ">
+
                         </div>
                      <div class="col-lg-6" >
                         <select class="form-control col-lg-6" id="city_id" name="city_id" style="border-color: teal !important;border-radius: 33px">
@@ -94,7 +94,7 @@ h5 {
                         </select>
                         <select class="form-control col-lg-6" id="ville_id" name="ville_id" style="border-color: teal !important;border-radius: 33px">
                             <option>{{ trans('produits.ville_id__placeholder') }}</option>
-                           
+
                         </select>
                       </div>
 
@@ -113,21 +113,21 @@ h5 {
         <div class="col-md-10" id="produits">
                 @foreach($produits as $produit)
             <div class="row p-2 bg-white border rounded mt-2">
-                <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="{{ asset('/ejar/public/images/' . $produit->photo) }}"></div>
+                <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="{{ asset('images/' . $produit->photo) }}"></div>
                 <div class="col-md-6 mt-1">
                     <h5>{{ $produit->name_ar }} / {{ $produit->name }}</h5>
                     <div class="d-flex flex-row">
                         <div class="ratings mr-2">
-                           
+
                         </div>
-                            
+
                             <span>{{ optional($produit->category)->name }}</span>
                     </div>
                     <div class="mt-1 mb-1 spec-1">
                     </div>
                     <div class="mt-1 mb-1 spec-1">
                         <span>{{ optional($produit->user)->name }}</span>
-                      
+
                 </div>
                     <p class="text-justify text-truncate para mb-0">{{ $produit->discription_ar }}<br><br></p>
                 </div>
@@ -149,7 +149,7 @@ h5 {
                                         <a href="{{ route('produits.produit.show', $produit->id ) }}" class="btn btn-info" title="{{ trans('produits.show') }}">
                                            {{ trans('produits.show') }}
                                         </a>
-                                       
+
                                         @if(Auth::user()->type == 'superadmin' || Auth::user()->type == 'admin')
                                         @if($produit->accepted !="Yes")
                                         <a href="{{ route('produits.produit.accepted', $produit->id ) }}" class="btn btn-success" title="{{ trans('produits.accepted') }}">
@@ -167,7 +167,7 @@ h5 {
                                         </button>
                                         @endif
 
-                                       
+
                                     </div>
 
                                 </form>
@@ -175,7 +175,7 @@ h5 {
                 </div>
             </div>
              @endforeach
-      
+
         </div>
     </div>
 </div>
@@ -185,14 +185,14 @@ h5 {
 
             {!! $produits->links('layouts.pagination') !!}
         </div>
-           
+
 
             </div>
         </div>
 
-      
+
         @endif
-    
+
     </div>
 
 <!-- Modal -->
@@ -208,7 +208,7 @@ h5 {
       <div class="modal-body">
         <input type="hidden" name="vip" id="vip">
         <input type="hidden" name="produit" id="produit">
- 
+
 
         <div class="form-group {{ $errors->has('date') ? 'has-error' : '' }}">
     <label for="date" class="col-md-2 control-label">{{ trans('vips.date') }}</label>
@@ -234,7 +234,7 @@ h5 {
 @section('js')
 
  <script type="text/javascript">
-     
+
 
 function vip(id,vip){
 $('#vip').val();
@@ -246,10 +246,10 @@ $('#myModal').show();
 
 }
 function closemodal(){
-    
+
   $('#myModal').hide();
-  
- 
+
+
 }
 
 
@@ -257,13 +257,13 @@ function save(){
     $('#myModal').hide();
 var vip = $('#vip').val();
 var id = $('#produit').val();
-       $.get("{{ url('vip')}}", 
+       $.get("{{ url('vip')}}",
         { vip: vip,
            Produit_id:id,
            date:$('#date').val(),
-         }, 
+         },
         function(data) {
-          
+
            if(data == "success"){
                window.setTimeout(function(){location.reload()},2000);
            }
@@ -273,32 +273,32 @@ var id = $('#produit').val();
 
 
 function cherche(){
-   
 
-       $.get("{{ url('cherchenot')}}", 
-        { 
+
+       $.get("{{ url('cherchenot')}}",
+        {
            city_id:$('#city_id').val(),
            ville_id:$('#ville_id').val(),
            find:$('#find').val(),
-         }, 
+         },
         function(data) {
-            
-               $('#produits').empty(); 
-               $('#produitsfooter').empty(); 
-               
-             var type = "{{ Auth::user()->type }}";    
+
+               $('#produits').empty();
+               $('#produitsfooter').empty();
+
+             var type = "{{ Auth::user()->type }}";
 
            $.each(data, function(key, element) {
-            
-            
-           
-var html = "<div class='row p-2 bg-white border rounded mt-2'><div class='col-md-3 mt-1'><img class='img-fluid img-responsive rounded product-image' src='{{ asset('/ejar/public/images/') }}/"+element.photo+"'></div><div class='col-md-6 mt-1'>    <h5>"+element.name_ar +" / "+element.name +"</h5>    <div class='d-flex flex-row'><div class='ratings mr-2'></div><span>"+element.category.name +"</span>    </div>    <div class='mt-1 mb-1 spec-1'>    </div>    <div class='mt-1 mb-1 spec-1'><span>"+element.user.name +"</span>      </div>    <p class='text-justify text-truncate para mb-0'>"+element.discription_ar +"<br><br></p></div><div class='align-items-center align-content-center col-md-3 border-left mt-1'>    <div class='d-flex flex-row align-items-center'>        <h4 class='mr-1'>"+element.price +"</h4>    </div>" ;
+
+
+
+var html = "<div class='row p-2 bg-white border rounded mt-2'><div class='col-md-3 mt-1'><img class='img-fluid img-responsive rounded product-image' src='{{ asset('images/') }}/"+element.photo+"'></div><div class='col-md-6 mt-1'>    <h5>"+element.name_ar +" / "+element.name +"</h5>    <div class='d-flex flex-row'><div class='ratings mr-2'></div><span>"+element.category.name +"</span>    </div>    <div class='mt-1 mb-1 spec-1'>    </div>    <div class='mt-1 mb-1 spec-1'><span>"+element.user.name +"</span>      </div>    <p class='text-justify text-truncate para mb-0'>"+element.discription_ar +"<br><br></p></div><div class='align-items-center align-content-center col-md-3 border-left mt-1'>    <div class='d-flex flex-row align-items-center'>        <h4 class='mr-1'>"+element.price +"</h4>    </div>" ;
 
                 let id = element.id;
                 if(element.rent_sale== 'on'){
                      html = html + " <h6 class='text-success'>الإيجار</h6>"
 
-                 
+
                        }else{
                        html= html + " <h6 class='text-success'>بيع</h6>";
                     }
@@ -311,8 +311,8 @@ var html = "<div class='row p-2 bg-white border rounded mt-2'><div class='col-md
     if(element.accepted !="Yes"){
         html = html + " <a href='{{ url('produits/accepted')}}/"+element.id+"' class='btn btn-success' title='{{ trans('produits.accepted') }}'><span class='glyphicon glyphicon-ok' aria-hidden='true'></span>{{ trans('produits.accepted')}}</a> <a href='{{ url('produits/refused')}}/"+element.id+"' class='btn btn-danger' title='{{ trans('produits.refused') }}'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span>{{ trans('produits.refused')}}</a>";
     }
- 
-}   
+
+}
 
 
                                          html= html + "</div></form>    </div></div>  </div>";
@@ -320,19 +320,19 @@ var html = "<div class='row p-2 bg-white border rounded mt-2'><div class='col-md
                      $('#produits').append(html);
 
 
-                               
-                            
-             
-           
+
+
+
+
             });
-         
+
         });
 
 }
 
  </script>
 
-    
 
 
-@endsection 
+
+@endsection

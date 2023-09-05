@@ -4,7 +4,7 @@
 
 <style type="text/css">
   .header-hero {
- background-image: url({{asset('/ejar/public/images/home.jpg')}}); 
+ background-image: url({{asset('images/home.jpg')}});
  }
 
 </style>
@@ -26,7 +26,7 @@
   <div class="hp-vendor__summary hp-widget widget">
   <div class="hp-vendor__image">
 
-<img src="{{ asset('/ejar/public/images/' . $vendor->photo) }}" style="    height: 160px!important;" alt="Brian Peterson" loading="lazy">
+<img src="{{ asset('images/' . $vendor->photo) }}" style="    height: 160px!important;" alt="Brian Peterson" loading="lazy">
 </div>
 <h3 class="hp-vendor__name">
   <span>{{$vendor->name}}
@@ -61,7 +61,7 @@ Member since {{$vendor->created_at}}
 
 <a href="{{url('/listing/'.$produit->id)}}">
 
-<img src="{{ asset('/ejar/public/images/'.$produit->photo)}}" alt="{{$produit->name}} {{$produit->name_ar}}" loading="lazy">
+<img src="{{ asset('images/'.$produit->photo)}}" alt="{{$produit->name}} {{$produit->name_ar}}" loading="lazy">
 
 </a>
 </div>
@@ -97,7 +97,7 @@ Member since {{$vendor->created_at}}
 </div>
 
 <time class="hp-listing__created-date hp-listing__date hp-meta" datetime="2019-06-23 11:11:15">
-Added on {{$produit->created_at}} 
+Added on {{$produit->created_at}}
 </time>
 <!-- <div class="hp-listing__rating hp-rating">
   <div class="hp-rating__stars hp-rating-stars" data-component="rating" data-value="3.7">
@@ -179,7 +179,7 @@ Added on {{$produit->created_at}}
    {{$produit->price}} QAR / month
     @else
     {{$produit->price}} QAR
-                    
+
     @endif
 </div>
 </div>

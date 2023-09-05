@@ -90,7 +90,7 @@ input:checked + .slider .off
 
 .slider.round:before {
   border-radius: 50%;}
-  
+
   .panel-success>.panel-heading {
     background: teal;
     border-color: teal;
@@ -128,7 +128,7 @@ input:checked + .slider .off
             </div>
 
         </div>
-        
+
         @if(count($users) == 0)
             <div class="panel-body text-center">
                 <h4>No Users Available.</h4>
@@ -142,12 +142,12 @@ input:checked + .slider .off
                         <tr>
                              <th>{{ trans('categories.photo') }}</th>
                             <th>{{ trans('user.name') }}</th>
-                           
+
                             <th></th>
                             <th>{{ trans('user.email') }}</th>
-                         
+
                             <th>{{ trans('user.phone') }}</th>
-                          
+
                          <th></th>
 
                             <th>{{ trans('general.action')}}</th>
@@ -162,41 +162,41 @@ input:checked + .slider .off
                     @else
                     <tr style="    background: #b92c28;">
                     @endif
-                              <td><img style="    width: 100px!important; height: 100px!important;border-radius: 50%;" src="{{ asset('/ejar/public/images/' . $user->photo) }}"></td>
+                              <td><img style="    width: 100px!important; height: 100px!important;border-radius: 50%;" src="{{ asset('images/' . $user->photo) }}"></td>
 
                             <td  style="color: #ffffff;" >{{ $user->name }}<br>
                             {{ $user->user_name }}</td>
-                           
+
                             <td>
                                  <a href="https://www.facebook.com/sharer.php?u=ejar.qa/vendor/{{$user->id}}" style="color: #ffffff;">{{ trans('general.lient')}} </a>
                             </td>
                             <td  style="color: #ffffff;">
                                 @if($user->type == 'admin')
-                                {{ $user->Produit()->count()}} {{ trans('general.produite')}} 
+                                {{ $user->Produit()->count()}} {{ trans('general.produite')}}
                                 @elseif($user->type == 'campany6')
                                 {{ $user->Produit()->count()}} {{ trans('general.produite')}}
                                 @elseif($user->type == 'campany1')
                                 {{ $user->Produit()->count()}} {{ trans('general.produite')}}/10
                                 @elseif($user->type == 'campany2')
-                                {{ $user->Produit()->count()}} {{ trans('general.produite')}}/15 
+                                {{ $user->Produit()->count()}} {{ trans('general.produite')}}/15
                                 @elseif($user->type == 'campany3')
-                                {{ $user->Produit()->count()}} {{ trans('general.produite')}}/25 
+                                {{ $user->Produit()->count()}} {{ trans('general.produite')}}/25
                                 @elseif($user->type == 'campany4')
-                                {{ $user->Produit()->count()}} {{ trans('general.produite')}}/40 
+                                {{ $user->Produit()->count()}} {{ trans('general.produite')}}/40
                                 @elseif($user->type == 'campany5')
-                                {{ $user->Produit()->count()}} {{ trans('general.produite')}}/60 
+                                {{ $user->Produit()->count()}} {{ trans('general.produite')}}/60
                                 @elseif($user->type == 'campany7')
-                                {{ $user->Produit()->count()}} {{ trans('general.produite')}}/100 
+                                {{ $user->Produit()->count()}} {{ trans('general.produite')}}/100
                                 @elseif($user->type == 'campany8')
-                                {{ $user->Produit()->count()}} {{ trans('general.produite')}}/200 
+                                {{ $user->Produit()->count()}} {{ trans('general.produite')}}/200
                                 @elseif($user->type == 'campany9')
-                                {{ $user->Produit()->count()}} {{ trans('general.produite')}}/300 
+                                {{ $user->Produit()->count()}} {{ trans('general.produite')}}/300
                                 @endif
                             </td>
                             <td  style="color: #ffffff;">{{ $user->email }}</td>
                             <td style="text-align: end;direction: ltr;color: #ffffff;">{{ $user->phone_code }}{{ $user->phone }}</td>
-                          
-                        
+
+
                             <td>
 
                                 <form method="POST" action="{!! route('destroycampany', $user->id) !!}" accept-charset="UTF-8">
@@ -224,7 +224,7 @@ input:checked + .slider .off
                                     </div>
 
                                 </form>
-                                
+
                             </td>
                         </tr>
 
@@ -238,10 +238,10 @@ input:checked + .slider .off
         <div class="panel-footer">
             {!! $users->render() !!}
         </div>
-        
-        
+
+
         @endif
-    
+
     </div>
 
 
@@ -258,8 +258,8 @@ input:checked + .slider .off
         <h4 class="modal-title">{{ trans('user.campanyType') }}</h4>
       </div>
       <div class="modal-body form-horizontal">
-        
- 
+
+
 
         <div class="form-group {{ $errors->has('date') ? 'has-error' : '' }}">
     <label for="date" class="col-md-2 control-label">{{ trans('user.campany_choix') }}</label>
@@ -287,7 +287,7 @@ input:checked + .slider .off
     <label for="date" class="col-md-2 control-label">{{ trans('user.campany_date') }}</label>
     <div class="col-md-10">
         <input type="date" name="expert" id="expert" class="form-control">
-          
+
     </div>
 </div>
 
@@ -316,7 +316,7 @@ input:checked + .slider .off
     <label for="date" class="col-md-2 control-label">{{ trans('user.email') }}</label>
     <div class="col-md-10">
         <input type="email" name="email" id="email" class="form-control" required>
-          
+
     </div>
 </div>
 
@@ -327,14 +327,14 @@ input:checked + .slider .off
     <label for="date" class="col-md-2 control-label">{{ trans('user.password') }}</label>
     <div class="col-md-10">
         <input type="password" name="password" id="password" class="form-control" required>
-          
+
     </div>
 </div>
 <div class="form-group {{ $errors->has('phone') ? 'has-error' : '' }}">
     <label for="phone" class="col-md-2 control-label">{{ trans('produits.phone') }}</label>
     <div class="col-md-10">
         <input class="form-control col-md-6" name="phone" type="tel" style="direction: ltr; text-align: end;" id="phone"  minlength="1" maxlength="8" placeholder="12 -345-678">
-            
+
             <select class="form-control col-md-2" name="phone_code" id="phone_code" style="    margin-right: 15px;">
 
                 @foreach($countries as $key => $value)
@@ -369,8 +369,8 @@ input:checked + .slider .off
         <h4 class="modal-title">{{ trans('user.campany_date') }}</h4>
       </div>
       <div class="modal-body form-horizontal">
-        
- 
+
+
 
         <input type="hidden" name="idc" id="idc">
 
@@ -378,7 +378,7 @@ input:checked + .slider .off
     <label for="date" class="col-md-2 control-label">{{ trans('user.campany_date') }}</label>
     <div class="col-md-10">
         <input type="date" name="expert" id="expert1" class="form-control">
-          
+
     </div>
 </div>
 
@@ -420,7 +420,7 @@ input:checked + .slider .off
       document.getElementById("password").required = true;
 
     }
-  }); 
+  });
 
 function add(){
 
@@ -437,11 +437,11 @@ $('#myModal1').show();
 
 }
 function closemodal(){
-    
+
   $('#myModal').hide();
    $('#myModal1').hide();
-  
- 
+
+
 }
 
 
@@ -454,9 +454,9 @@ if($('#auto').val()=="on"&& $('#email').val()=="" ){
 $('#auto').val("off");
 }
 
-       $.get("{{ route('campanystore')}}", 
+       $.get("{{ route('campanystore')}}",
         {
-          
+
            type:$('#type').val(),
            expert:$('#expert').val(),
 
@@ -466,8 +466,8 @@ $('#auto').val("off");
            password:$('#password').val(),
            phone_code:$('#phone_code').val(),
            phone:$('#phone').val(),
-          
-         }, 
+
+         },
         function(data) {
            console.log(data);
           if(data == "success"){
@@ -495,12 +495,12 @@ function save1(){
     $('#myModal1').hide();
 
 
-       $.get("{{ route('campanyeditdate')}}", 
+       $.get("{{ route('campanyeditdate')}}",
         {
-          
+
            id:$('#idc').val(),
            expert:$('#expert1').val(),
-         }, 
+         },
         function(data) {
            console.log(data);
            if(data == "success"){
@@ -512,7 +512,7 @@ function save1(){
 
  </script>
 
-    
 
 
-@endsection 
+
+@endsection

@@ -116,9 +116,9 @@ input:checked + .slider .off
 .carousel-control { background-color: rgba(0, 0, 0, 0); bottom: auto; font-size: 20px; left: 0; position: absolute; top: 30%; width: auto; }
 
 .carousel-control.right, .carousel-control.left { background-color: rgba(0, 0, 0, 0); background-image: none; }
-</style>  
+</style>
 <!---->
- 
+
 
 
   <style type="text/css">
@@ -140,18 +140,18 @@ input:checked + .slider .off
     <div class="">
 
         <div class="panel-heading clearfix">
-            
+
             <span class="pull-left">
                 <h4 class="mt-5 mb-5">
                {{ isset($produit->name) ? $produit->name : 'Produit' }}</h4>
             </span>
 
-         
+
 
         </div>
 
         <div class="panel-body">
-        
+
             @if ($errors->any())
                 <ul class="alert alert-danger">
                     @foreach ($errors->all() as $error)
@@ -161,33 +161,33 @@ input:checked + .slider .off
             @endif
 
             <div class="form-horizontal" >
-      
 
-   
+
+
               <div class="col-md-12">
 <div class="panel panel-success">
 <div class="panel-heading clearfixr">
       <h3 class="panel-title">{{trans('produits.info_general') }}
 </h3>
      </div>
-     
+
        <div class="panel-body">
-                  <div class="content"> 
+                  <div class="content">
 <div class="form-group {{ $errors->has('photo') ? 'has-error' : '' }}">
     <label for="photo" class="col-md-2 control-label">{{ trans('produits.photo') }}</label>
     <div class="col-md-10">
         <div class="input-group uploaded-file-group">
             <label class="input-group-btn">
-               
+
                 <span class="btn btn-default" style="background: transparent; border: transparent;">
-                     <img id="blah" src="{{ asset('/ejar/public/images/' . $produit->photo) }}" alt=" " style="height:260px;width:260px;border-radius: 50%;border-style: solid;border-width:2px;border-color:#3C8DBC;" />
-                    
+                     <img id="blah" src="{{ asset('images/' . $produit->photo) }}" alt=" " style="height:260px;width:260px;border-radius: 50%;border-style: solid;border-width:2px;border-color:#3C8DBC;" />
+
                 </span>
             </label>
-          
+
         </div>
 
-       
+
     </div>
 </div>
 
@@ -240,7 +240,7 @@ input:checked + .slider .off
 
 
 
-</div>         
+</div>
 </div>
 </div>
 </div>
@@ -251,20 +251,20 @@ input:checked + .slider .off
 <div class="panel-heading clearfixr">
       <h3 class="panel-title">{{trans('produits.info_localication') }}</h3>
      </div>
-     
+
        <div class="panel-body">
-                  <div class="content"> 
-                  
+                  <div class="content">
+
                    {{trans('produits.click_map') }}
           <!---------- el map ------------->
          <div class="form-group col-sm-12" style="padding:10px">
             <div id="mape" style="    height: 300px;width: 400; "></div>
-        </div> 
+        </div>
         </div>
          </div>
                <div class="panel-body">
-                 
-                 
+
+
                 <div class="form-group col-sm-12">
                   <label for="latitude" class="col-sm-2 control-label">{{trans('produits.Latitude') }}</label>
                    <div class="form-group col-sm-10">
@@ -292,7 +292,7 @@ input:checked + .slider .off
 </div>
 
 </div>
-            
+
 </div>
 </div>
 
@@ -304,9 +304,9 @@ input:checked + .slider .off
 <div class="panel-heading clearfixr">
       <h3 class="panel-title">{{trans('produits.info_sociale_média') }}</h3>
      </div>
-     
+
        <div class="panel-body">
-                  <div class="content"> 
+                  <div class="content">
 
 
 
@@ -342,7 +342,7 @@ input:checked + .slider .off
 
 </div>
 </div>
-            
+
 </div>
 </div>
 
@@ -354,9 +354,9 @@ input:checked + .slider .off
 <div class="panel-heading clearfixr">
       <h3 class="panel-title">{{trans('produits.info_special') }}</h3>
      </div>
-     
+
        <div class="panel-body">
-                  <div class="content"> 
+                  <div class="content">
 
 
 
@@ -370,15 +370,15 @@ input:checked + .slider .off
 
 
  <label class="switch">
-    
+
         @if($produit->rent_sale == "on")
-        <input type="checkbox" id="rent_sale" name="rent_sale" 
+        <input type="checkbox" id="rent_sale" name="rent_sale"
 
      checked disabled="">
      <div class="slider round"><!--ADDED HTML -->
         <span class="on">{{trans('produits.rent') }}</span>
         @else
-         <input type="checkbox" id="rent_sale" name="rent_sale" 
+         <input type="checkbox" id="rent_sale" name="rent_sale"
 
       disabled="">
      <div class="slider round"><!--ADDED HTML -->
@@ -388,7 +388,7 @@ input:checked + .slider .off
         <!--END--></div></label>
 
 
-       
+
     </div>
 </div>
 
@@ -403,13 +403,13 @@ input:checked + .slider .off
 
  <label class="switch">
       @if($produit->chiket == "on")
-        <input type="checkbox" id="rent_sale" name="rent_sale" 
+        <input type="checkbox" id="rent_sale" name="rent_sale"
 
      checked disabled="">
      <div class="slider round"><!--ADDED HTML -->
         <span class="on">{{trans('produits.Yes') }}</span>
         @else
-         <input type="checkbox" id="rent_sale" name="rent_sale" 
+         <input type="checkbox" id="rent_sale" name="rent_sale"
 
       disabled="">
      <div class="slider round"><!--ADDED HTML -->
@@ -429,13 +429,13 @@ input:checked + .slider .off
  <label class="switch">
 
   @if($produit->cautionnement == "on")
-        <input type="checkbox" id="rent_sale" name="rent_sale" 
+        <input type="checkbox" id="rent_sale" name="rent_sale"
 
      checked disabled="">
      <div class="slider round"><!--ADDED HTML -->
         <span class="on">{{trans('produits.Yes') }}</span>
         @else
-         <input type="checkbox" id="rent_sale" name="rent_sale" 
+         <input type="checkbox" id="rent_sale" name="rent_sale"
 
       disabled="">
      <div class="slider round"><!--ADDED HTML -->
@@ -446,7 +446,7 @@ input:checked + .slider .off
 
 
        @if($produit->cautionnement == "on")
-       
+
 
 <div id="price_cautionnement_div" class="form-group {{ $errors->has('price_cautionnement') ? 'has-error' : '' }} ">
     <label for="price_cautionnement" class="col-md-2 control-label">{{ trans('produits.price_cautionnement') }}</label>
@@ -454,10 +454,10 @@ input:checked + .slider .off
 
 
   {{$produit->price_cautionnement}}
-        
+
     </div>
 </div>
-      @endif 
+      @endif
 
 <div class="form-group {{ $errors->has('espacer') ? 'has-error' : '' }}">
     <label for="espacer" class="col-md-2 control-label">{{ trans('produits.espacer') }}</label>
@@ -504,13 +504,13 @@ input:checked + .slider .off
 
  <label class="switch">
      @if($produit->wifi == "on")
-        <input type="checkbox" id="rent_sale" name="rent_sale" 
+        <input type="checkbox" id="rent_sale" name="rent_sale"
 
      checked disabled="">
      <div class="slider round"><!--ADDED HTML -->
         <span class="on">{{trans('produits.Yes') }}</span>
         @else
-         <input type="checkbox" id="rent_sale" name="rent_sale" 
+         <input type="checkbox" id="rent_sale" name="rent_sale"
 
       disabled="">
      <div class="slider round"><!--ADDED HTML -->
@@ -520,7 +520,7 @@ input:checked + .slider .off
 </label>
 
 
-    
+
     </div>
 </div>
 
@@ -531,13 +531,13 @@ input:checked + .slider .off
     <div class="col-md-10">
         <label class="switch">
              @if($produit->kahramam == "on")
-        <input type="checkbox" id="rent_sale" name="rent_sale" 
+        <input type="checkbox" id="rent_sale" name="rent_sale"
 
      checked disabled="">
      <div class="slider round"><!--ADDED HTML -->
         <span class="on">{{trans('produits.Yes') }}</span>
         @else
-         <input type="checkbox" id="rent_sale" name="rent_sale" 
+         <input type="checkbox" id="rent_sale" name="rent_sale"
 
       disabled="">
      <div class="slider round"><!--ADDED HTML -->
@@ -546,7 +546,7 @@ input:checked + .slider .off
             </div>
         </label>
 
-     
+
         {!! $errors->first('kahramam', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
@@ -558,25 +558,25 @@ input:checked + .slider .off
     <div class="col-md-10">
          <label class="switch">
          @if($produit->commission == "2")
-        <input type="checkbox" id="rent_sale" name="rent_sale" 
+        <input type="checkbox" id="rent_sale" name="rent_sale"
 
      checked disabled="">
      <div class="slider round"><!--ADDED HTML -->
         <span class="on">{{trans('produits.Yes') }}</span>
         @elseif($produit->commission == "2")
-         <input type="checkbox" id="rent_sale" name="rent_sale" 
+         <input type="checkbox" id="rent_sale" name="rent_sale"
 
       disabled="">
      <div class="slider round"><!--ADDED HTML -->
         <span class="on">demi</span>
         @else
-         <input type="checkbox" id="rent_sale" name="rent_sale" 
+         <input type="checkbox" id="rent_sale" name="rent_sale"
 
       disabled="">
      <div class="slider round"><!--ADDED HTML -->
         <span class="off">{{trans('produits.NO') }}</span>
         @endif
-        
+
        </div>
    </label>
     </div>
@@ -592,13 +592,13 @@ input:checked + .slider .off
 
 
  <label class="switch">
-   
-        <input type="checkbox" id="rent_sale" name="rent_sale" 
+
+        <input type="checkbox" id="rent_sale" name="rent_sale"
 
      checked disabled="">
      <div class="slider round"><!--ADDED HTML -->
         <span class="on">{{trans('produits.Yes') }}</span>
-       
+
 
     </div></label>
 
@@ -613,13 +613,13 @@ input:checked + .slider .off
     <div class="col-md-10">
 
 
- <label class="switch"> 
-        <input type="checkbox" id="rent_sale" name="rent_sale" 
+ <label class="switch">
+        <input type="checkbox" id="rent_sale" name="rent_sale"
 
      checked disabled="">
      <div class="slider round"><!--ADDED HTML -->
         <span class="on">{{trans('produits.Yes') }}</span>
-        
+
        </div></label>
 
 
@@ -636,7 +636,7 @@ input:checked + .slider .off
     <div class="col-md-10">
 
 
- <label class="switch"> <input type="checkbox" id="rent_sale" name="rent_sale" 
+ <label class="switch"> <input type="checkbox" id="rent_sale" name="rent_sale"
 
      checked disabled="">
      <div class="slider round"><!--ADDED HTML -->
@@ -658,7 +658,7 @@ input:checked + .slider .off
     <div class="col-md-10">
 
 
- <label class="switch"> <input type="checkbox" id="rent_sale" name="rent_sale" 
+ <label class="switch"> <input type="checkbox" id="rent_sale" name="rent_sale"
 
      checked disabled="">
      <div class="slider round"><!--ADDED HTML -->
@@ -681,7 +681,7 @@ input:checked + .slider .off
     <div class="col-md-10">
 
 
- <label class="switch"> <input type="checkbox" id="rent_sale" name="rent_sale" 
+ <label class="switch"> <input type="checkbox" id="rent_sale" name="rent_sale"
 
      checked disabled="">
      <div class="slider round"><!--ADDED HTML -->
@@ -702,7 +702,7 @@ input:checked + .slider .off
     <div class="col-md-10">
 
 
- <label class="switch"> <input type="checkbox" id="rent_sale" name="rent_sale" 
+ <label class="switch"> <input type="checkbox" id="rent_sale" name="rent_sale"
 
      checked disabled="">
      <div class="slider round"><!--ADDED HTML -->
@@ -725,7 +725,7 @@ input:checked + .slider .off
     <label for="furnished" class="col-md-2 control-label">{{ trans('produits.furnished') }}</label>
     <div class="col-md-10">
 
- <label class="switch"> <input type="checkbox" id="rent_sale" name="rent_sale" 
+ <label class="switch"> <input type="checkbox" id="rent_sale" name="rent_sale"
 
      checked disabled="">
      <div class="slider round"><!--ADDED HTML -->
@@ -741,7 +741,7 @@ input:checked + .slider .off
 
 
 </div>
-            
+
 </div>
 </div>
 
@@ -753,7 +753,7 @@ input:checked + .slider .off
 
                 <div class="form-group">
                     <div class="col-md-12"style="justify-content: center; display: flex;">
-                      
+
                     </div>
                 </div>
 
@@ -772,10 +772,10 @@ input:checked + .slider .off
      <br><br>
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-           
+
               <li class="active"><a href="#img" data-toggle="tab">Produit video</a></li>
               <li><a href="#add_ved" data-toggle="tab">Produit image</a></li>
-            
+
             </ul>
             <div class="tab-content">
               <div class="active tab-pane" id="img" style="    min-height: 513px;">
@@ -785,18 +785,18 @@ input:checked + .slider .off
 @foreach($images as $key => $video)
 @if( $video->v == 0 && $video->type == 'video' )
       <div class="item active"> <center>
-<video   style="width:auto;height:400px;" controls> 
-        <source src="{{ url('/ejar/public/images/' . $video->photo)  }}" type="video/mp4"> 
-        Your browser does not support the video tag. 
-   </video> 
+<video   style="width:auto;height:400px;" controls>
+        <source src="{{ url('images/' . $video->photo)  }}" type="video/mp4">
+        Your browser does not support the video tag.
+   </video>
 
         </center> </div>
 @elseif( $video->v != 0 && $video->type == 'video' )
       <div class="item "> <center>
-<video   style="width:auto;height:400px;" controls> 
-        <source src="{{ url('/ejar/public/images/' . $video->photo)  }}" type="video/mp4"> 
-        Your browser does not support the video tag. 
-   </video> 
+<video   style="width:auto;height:400px;" controls>
+        <source src="{{ url('images/' . $video->photo)  }}" type="video/mp4">
+        Your browser does not support the video tag.
+   </video>
 
         </center> </div>
 
@@ -811,46 +811,46 @@ input:checked + .slider .off
     <div id="thumbcarousel" class="carousel slide" data-interval="false">
       <div class="carousel-inner">
         <div class="item active">
-      
+
 @foreach($images as $key => $video)
 
 
      @if(  $video->type == 'video' )
-     
+
           <div  style="position: relative; left: 0; top: 0;   " data-target="#carousel" data-slide-to="{{$video->v}}" class="thumb">
-         
-          <video style="width: 115px;"  controls> 
-        <source src="{{ url('/ejar/public/images/' . $video->photo)  }}" type="video/mp4"> 
-        Your browser does not support the video tag. 
-   </video> 
+
+          <video style="width: 115px;"  controls>
+        <source src="{{ url('images/' . $video->photo)  }}" type="video/mp4">
+        Your browser does not support the video tag.
+   </video>
           <button style="position:absolute;bottom:0px;right:0px;" class="deleteimage" value="{{$video->id}}" ><i class="fa fa-trash"></i></button>
           </div>
           @endif
      @endforeach          <!-- ;-->
-          
+
 
 
         </div>
 
       </div>
-      <!-- /carousel-inner --> 
-      <a class="left carousel-control" href="#thumbcarousel" role="button" data-slide="prev"> <i class="fa fa-angle-left" aria-hidden="true"></i> </a> <a class="right carousel-control" href="#thumbcarousel" role="button" data-slide="next"><i class="fa fa-angle-right" aria-hidden="true"></i> </a> 
+      <!-- /carousel-inner -->
+      <a class="left carousel-control" href="#thumbcarousel" role="button" data-slide="prev"> <i class="fa fa-angle-left" aria-hidden="true"></i> </a> <a class="right carousel-control" href="#thumbcarousel" role="button" data-slide="next"><i class="fa fa-angle-right" aria-hidden="true"></i> </a>
       </div>
-    <!-- /thumbcarousel --> 
-    
+    <!-- /thumbcarousel -->
+
   </div>
 </div>
 
 
               </div>
-    
-              
+
+
 
 
 
 
                     <div class="tab-pane" id="add_ved">
-                  
+
 
      <div class="product-slider">
   <div id="carousel" class="carousel slide"style="min-height: 300px;" data-ride="carousel">
@@ -858,9 +858,9 @@ input:checked + .slider .off
 @foreach($images as $key => $image)
 @if($image->i == 0 && $image->type == 'image')
       <div class="item active"> <center>
-        <img style="width:auto;height:400px;" src="{{ url('/ejar/public/images/' . $image->photo) }}"></center> </div>
+        <img style="width:auto;height:400px;" src="{{ url('images/' . $image->photo) }}"></center> </div>
 @elseif($image->i != 0 && $image->type == 'image')
-      <div class="item"> <center><img style="width:auto;height:400px;" src="{{ url('/ejar/public/thumbs/' . $image->photo) }}"></center> </div>
+      <div class="item"> <center><img style="width:auto;height:400px;" src="{{ url('/thumbs/' . $image->photo) }}"></center> </div>
 @endif
 @endforeach
 
@@ -870,30 +870,30 @@ input:checked + .slider .off
     <div id="thumbcarousel" class="carousel slide" data-interval="false">
       <div class="carousel-inner">
         <div class="item active">
-      
+
 @foreach($images as $key => $image)
 
 
-     
+
      @if($image->type == 'image')
           <div  style="position: relative; left: 0; top: 0;   " data-target="#carousel" data-slide-to="{{$key}}" class="thumb">
-            <img src="{{ url('/ejar/public/thumbs/' . $image->photo) }}" >
-          
+            <img src="{{ url('/thumbs/' . $image->photo) }}" >
+
           <button style="position:absolute;bottom:0px;right:0px;" class="deleteimage" value="{{$image->id}}" ><i class="fa fa-trash"></i></button>
           </div>
           @endif
      @endforeach          <!-- ;-->
-          
+
 
 
         </div>
 
       </div>
-      <!-- /carousel-inner --> 
-      <a class="left carousel-control" href="#thumbcarousel" role="button" data-slide="prev"> <i class="fa fa-angle-left" aria-hidden="true"></i> </a> <a class="right carousel-control" href="#thumbcarousel" role="button" data-slide="next"><i class="fa fa-angle-right" aria-hidden="true"></i> </a> 
+      <!-- /carousel-inner -->
+      <a class="left carousel-control" href="#thumbcarousel" role="button" data-slide="prev"> <i class="fa fa-angle-left" aria-hidden="true"></i> </a> <a class="right carousel-control" href="#thumbcarousel" role="button" data-slide="next"><i class="fa fa-angle-right" aria-hidden="true"></i> </a>
       </div>
-    <!-- /thumbcarousel --> 
-    
+    <!-- /thumbcarousel -->
+
   </div>
 </div>
 
@@ -902,14 +902,14 @@ input:checked + .slider .off
 
               </div>
               <!-- /.tab-pane -->
-    
+
             </div>
             <!-- /.tab-content -->
           </div>
           <!-- /.nav-tabs-custom -->
         </div>
         <!-- /.col -->
-        
+
 
 @endsection
 
@@ -940,8 +940,8 @@ input:checked + .slider .off
             return element;
         };
     })();
-   
-    
+
+
     $(document).ready(function() {
 
 
@@ -968,12 +968,12 @@ var isArabic = /^([\u0600-\u06ff]|[\u0750-\u077f]|[\ufb50-\ufbc1]|[\ufbd3-\ufd3f
 
 
 $("#cautionnement").change(function() {
-          
-          
-          
-           if (document.getElementById('cautionnement').checked) 
+
+
+
+           if (document.getElementById('cautionnement').checked)
   {
-       
+
 
 document.getElementById("price_cautionnement_div").classList.remove('hidden');
   } else {
@@ -981,7 +981,7 @@ document.getElementById("price_cautionnement_div").classList.remove('hidden');
 
 
   }
-        
+
       })
          $("#photo").change(function() {
             var file = this.files[0];
@@ -992,23 +992,23 @@ document.getElementById("price_cautionnement_div").classList.remove('hidden');
                 $("#photo").val('');
                 return false;
             }
-        
+
       })
 
-      
+
 
           $('#city_id').change(function(){
-        $.get("{{ url('villectiy')}}", 
-        { option: $(this).val() }, 
+        $.get("{{ url('villectiy')}}",
+        { option: $(this).val() },
         function(data) {
-            $('#ville_id').empty(); 
+            $('#ville_id').empty();
 
             $.each(data, function(key, element) {
                 $('#ville_id').append("<option value='" + element.id + "'>" + element.ville + "</option>");
             });
         });
 
-        
+
     });
 
        });
@@ -1026,12 +1026,12 @@ document.getElementById("price_cautionnement_div").classList.remove('hidden');
 
        }
 
-  
+
         var map;
 
     function initMap() {
-        var latitude = 25.213450081603526; // YOUR LATITUDE VALUE
-        var longitude = 51.255206967438085; // YOUR LONGITUDE VALUE
+        var latitude = 18.079059; // YOUR LATITUDE VALUE
+var longitude = -15.965395; // YOUR LONGITUDE VALUE
 
         var myLatLng = {
             lat: latitude,
@@ -1044,7 +1044,7 @@ document.getElementById("price_cautionnement_div").classList.remove('hidden');
             disableDoubleClickZoom: true, // disable the default map zoom on double click
         });
 
-        // Update lat/long value of div when anywhere in the map is clicked    
+        // Update lat/long value of div when anywhere in the map is clicked
         google.maps.event.addListener(map, 'click', function(event) {
             $("#latitude").val(event.latLng.lat());
             $("#longitude").val(event.latLng.lng());

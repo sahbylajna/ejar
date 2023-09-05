@@ -116,36 +116,36 @@ input:checked + .slider .off
 
     <div class="panel panel-default">
 
-     
-        
-  
+
+
+
         <div class="panel-body panel-body-with-table">
             <div  class="form-horizontal">
- 
+
    <div class="col-md-12">
 <div class="panel panel-success">
 <div class="panel-heading clearfixr">
       <h3 class="panel-title">{{trans('produits.info_general') }}
 </h3>
      </div>
-     
+
        <div class="panel-body">
-                  <div class="content"> 
+                  <div class="content">
 <div class="form-group {{ $errors->has('photo') ? 'has-error' : '' }}">
     <label for="photo" class="col-md-2 control-label">{{ trans('produits.photo') }}</label>
     <div class="col-md-10">
         <div class="input-group uploaded-file-group">
             <label class="input-group-btn">
-               
+
                 <span class="btn btn-default" style="background: transparent; border: transparent;">
-                     <img id="blah" src="{{ asset('/ejar/public/images/' . $user->photo) }}" alt=" " style="height:260px;width:260px;border-radius: 50%;border-style: solid;border-width:2px;border-color:#3C8DBC;" />
-                     
+                     <img id="blah" src="{{ asset('images/' . $user->photo) }}" alt=" " style="height:260px;width:260px;border-radius: 50%;border-style: solid;border-width:2px;border-color:#3C8DBC;" />
+
                 </span>
             </label>
-          
+
         </div>
 
-       
+
         {!! $errors->first('photo', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
@@ -179,8 +179,8 @@ input:checked + .slider .off
     <label for="phone" class="col-md-2 control-label">{{ trans('produits.phone') }}</label>
     <div class="col-md-10" style="unicode-bidi: plaintext;
     display: flex;">
- {{ $user->phone_code }} 
-     {{ $user->phone}}  
+ {{ $user->phone_code }}
+     {{ $user->phone}}
     </div>
 </div>
 
@@ -191,7 +191,7 @@ input:checked + .slider .off
 
 
 
-</div>         
+</div>
 </div>
 </div>
 </div>
@@ -202,12 +202,12 @@ input:checked + .slider .off
 <div class="panel-heading clearfixr">
       <h3 class="panel-title">{{trans('user.info_localication') }}</h3>
      </div>
-     
-      
+
+
                <div class="panel-body">
-                 
-                 
-               
+
+
+
 
             <div class="form-group {{ $errors->has('city_id') ? 'has-error' : '' }}">
     <label for="city_id" class="col-md-2 control-label">{{ trans('produits.city_id') }}</label>
@@ -223,13 +223,13 @@ input:checked + .slider .off
     <div class="col-md-10">
           @if($user->ville_id)
         {{$user->ville()->first()->ville}} <br>
-        {{$user->ville()->first()->name_ar}} 
+        {{$user->ville()->first()->name_ar}}
         @endif
     </div>
 </div>
 
 </div>
-            
+
 </div>
 </div>
 
@@ -241,9 +241,9 @@ input:checked + .slider .off
 <div class="panel-heading clearfixr">
       <h3 class="panel-title">{{trans('produits.info_sociale_média') }}</h3>
      </div>
-     
+
        <div class="panel-body">
-                  <div class="content"> 
+                  <div class="content">
 
 
 
@@ -273,21 +273,20 @@ input:checked + .slider .off
     <label for="whatsapp" class="col-md-2 control-label">{{ trans('produits.whatsapp') }}</label>
     <div class="col-md-10" style="unicode-bidi: plaintext;
     display: flex;">
- {{ $user->phone_code }} {{ $user->whats}} 
+ {{ $user->phone_code }} {{ $user->whats}}
     </div>
 </div>
 
 
 </div>
 </div>
-            
+
 </div>
 </div>
 
 
 
 
-   
 
 
 
@@ -295,14 +294,15 @@ input:checked + .slider .off
 
 
 
-             
+
+
             </div>
         </div>
 
-       
-        
-      
-    
+
+
+
+
     </div>
 @endsection
 
@@ -332,12 +332,12 @@ input:checked + .slider .off
             return element;
         };
     })();
-   
-    
-  
 
 
-  
+
+
+
+
         var map;
 
     function initMap() {
@@ -357,8 +357,8 @@ input:checked + .slider .off
             disableDoubleClickZoom: true, // disable the default map zoom on double click
         });
 
-        // Update lat/long value of div when anywhere in the map is clicked    
-       
+        // Update lat/long value of div when anywhere in the map is clicked
+
 
 @if($user->latitude != null)
      const uluru = { lat: {{$user->latitude}}, lng: {{$user->longitude}} };
@@ -368,8 +368,8 @@ input:checked + .slider .off
   });
 
 @endif
-       
- 
+
+
     }
 
 </script>

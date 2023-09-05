@@ -24,9 +24,9 @@
 .carousel-control { background-color: rgba(0, 0, 0, 0); bottom: auto; font-size: 20px; left: 0; position: absolute; top: 30%; width: auto; }
 
 .carousel-control.right, .carousel-control.left { background-color: rgba(0, 0, 0, 0); background-image: none; }
-</style>  
+</style>
 <!---->
- 
+
 
 
   <style type="text/css">
@@ -64,9 +64,9 @@
                         <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                     </a>
 
-                   
-                    
-                   
+
+
+
 
                     <button type="submit" class="btn btn-danger" title="{{ trans('produits.delete') }}" onclick="return confirm(&quot;{{ trans('produits.confirm_delete') }}?&quot;)">
                         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
@@ -88,7 +88,7 @@
             <dt>{{ trans('produits.name') }}</dt>
             <dd>{{ $produit->name }}</dd>
             <dt>{{ trans('produits.photo') }}</dt>
-            <dd>{{ asset('/ejar/public/images/' . $produit->photo) }}</dd>
+            <dd>{{ asset('images/' . $produit->photo) }}</dd>
             <dt>{{ trans('produits.discription_ar') }}</dt>
             <dd>{{ $produit->discription_ar }}</dd>
             <dt>{{ trans('produits.discription') }}</dt>
@@ -188,7 +188,7 @@
     <div class="panel panel-default">
 
         <div class="panel-heading clearfix">
-            
+
             <span class="pull-left">
                 <h4 class="mt-5 mb-5">
                 {{ $produit->name }} photo</h4>
@@ -203,7 +203,7 @@
         </div>
 
         <div class="panel-body">
-        
+
             @if ($errors->any())
                 <ul class="alert alert-danger">
                     @foreach ($errors->all() as $error)
@@ -212,19 +212,19 @@
                 </ul>
             @endif
 
-  
-            
 
-   
-           
+
+
+
+
          <div class="col-md-12">
      <br><br>
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-           
+
               <li class="active"><a href="#img" data-toggle="tab">Produit Image</a></li>
               <li><a href="#add_img" data-toggle="tab">Add image</a></li>
-            
+
             </ul>
             <div class="tab-content">
               <div class="active tab-pane" id="img" style="    min-height: 513px;">
@@ -233,9 +233,9 @@
     <div class="carousel-inner">
 @foreach($images as $key => $image)
 @if($key == 0)
-      <div class="item active"> <center><img style="width:auto;height:400px;" src="{{ url('/ejar/public/images/' . $image->photo) }}"></center> </div>
+      <div class="item active"> <center><img style="width:auto;height:400px;" src="{{ url('images/' . $image->photo) }}"></center> </div>
 @else
-      <div class="item"> <center><img style="width:auto;height:400px;" src="{{ url('/ejar/public/thumbs/' . $image->photo) }}"></center> </div>
+      <div class="item"> <center><img style="width:auto;height:400px;" src="{{ url('/thumbs/' . $image->photo) }}"></center> </div>
 @endif
 @endforeach
 
@@ -245,38 +245,38 @@
     <div id="thumbcarousel" class="carousel slide" data-interval="false">
       <div class="carousel-inner">
         <div class="item active">
-      
+
 @foreach($images as $key => $image)
 
 
-     
-     
-          <div  style="position: relative; left: 0; top: 0;   " data-target="#carousel" data-slide-to="{{$key}}" class="thumb"><img src="{{ url('/ejar/public/thumbs/' . $image->photo) }}" >
-          
+
+
+          <div  style="position: relative; left: 0; top: 0;   " data-target="#carousel" data-slide-to="{{$key}}" class="thumb"><img src="{{ url('/thumbs/' . $image->photo) }}" >
+
           <button style="position:absolute;bottom:0px;right:0px;" class="deleteimage" value="{{$image->id}}" ><i class="fa fa-trash"></i></button>
           </div>
      @endforeach          <!-- ;-->
-          
+
 
 
         </div>
 
       </div>
-      <!-- /carousel-inner --> 
-      <a class="left carousel-control" href="#thumbcarousel" role="button" data-slide="prev"> <i class="fa fa-angle-left" aria-hidden="true"></i> </a> <a class="right carousel-control" href="#thumbcarousel" role="button" data-slide="next"><i class="fa fa-angle-right" aria-hidden="true"></i> </a> 
+      <!-- /carousel-inner -->
+      <a class="left carousel-control" href="#thumbcarousel" role="button" data-slide="prev"> <i class="fa fa-angle-left" aria-hidden="true"></i> </a> <a class="right carousel-control" href="#thumbcarousel" role="button" data-slide="next"><i class="fa fa-angle-right" aria-hidden="true"></i> </a>
       </div>
-    <!-- /thumbcarousel --> 
-    
+    <!-- /thumbcarousel -->
+
   </div>
 </div>
 
 
               </div>
-    
-              
+
+
 
               <div class="tab-pane" id="add_img">
-                  
+
 
 
 <form  method="POST" action="{{ route('addimage') }}" accept-charset="UTF-8" id="addimage" name="create_produit_form" class="form-horizontal" enctype="multipart/form-data">
@@ -299,18 +299,18 @@
 
               </div>
               <!-- /.tab-pane -->
-    
+
             </div>
             <!-- /.tab-content -->
           </div>
           <!-- /.nav-tabs-custom -->
         </div>
         <!-- /.col -->
-        
 
 
-           
-                
+
+
+
 
         </div>
     </div>
@@ -322,13 +322,13 @@
 
 
   <script>
-    
+
     $(document).ready(function() {
-   
+
 $(".deleteimage").click(function() {
-    var i = $(this).val(); 
+    var i = $(this).val();
 var me = $(this);
- 
+
   $.confirm({
     title: 'Are you sure ?',
     content: 'Delete this image from salon gallery !',
@@ -345,23 +345,23 @@ var me = $(this);
             },
             dataType: "html",
             success: function (datas) {
-     
+
                  me.attr("disabled", true);
                  me.text("DELETED");
-    
+
                  $.alert('Image deleted !');
                  window.setTimeout(function(){location.reload()},2000);
-                
-                
+
+
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert("Error deleting!");
-                
+
             }
         });
          },
         cancel: function () {
-           
+
         }
 
     }
@@ -379,9 +379,9 @@ var me = $(this);
                 $("#photo").val('');
                 return false;
             }
-        
+
       })
-        
+
 
        });
     function readURL(input) {
@@ -398,10 +398,10 @@ var me = $(this);
 
        }
 
-  
-       
 
-    
+
+
+
 
 </script>
 

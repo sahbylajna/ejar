@@ -4,7 +4,7 @@
 
 <style type="text/css">
   .header-hero {
- background-image: url({{asset('/ejar/public/images/home.jpg')}}); 
+ background-image: url({{asset('images/home.jpg')}});
  }
 
 </style>
@@ -22,22 +22,22 @@
   <div class="hp-row">
  <div class="form-group col-sm-12" style="padding:10px">
             <div id="mape" style="    height: 300px;width: 400; "></div>
-        </div> 
+        </div>
 
   <div class="form-group col-sm col-xs-12 " style="padding:10px">
            <div class="col-sm-6"> <h5 class="widget__title">Email :</h5>{{$user->email}}</div>
           <div class="col-sm-6"> <h5 class="widget__title">Phone :</h5>{{$user->phone}}</div>
-         
-         
-           
-        </div> 
+
+
+
+        </div>
 
   <div class="form-group col-sm col-xs-12" style="padding:10px">
            <div class="col-sm-6"> <h5 class="widget__title">whatsapp :</h5>{{$user->whats}}</div>
     <div class="col-sm-6"> <h5 class="widget__title">Adresse :</h5>{{$user->ville()->first()->ville}} ,{{$user->city()->first()->name}} <br>
 	{{$user->ville()->first()->name_ar}} ,{{$user->city()->first()->name_ar}}</div>
-         
-        </div> 
+
+        </div>
 
 </div>
 </div>
@@ -64,7 +64,7 @@
 <br>
 	<div class="form-group col-sm col-xs-12">
 
- 
+
     <label for="subject">Message</label>
     <textarea  class="hp-field hp-field--text" id="subject" name="Message" placeholder="Write something.." style="height:200px"></textarea>
 </div>
@@ -107,8 +107,8 @@
             return element;
         };
     })();
-   
-    
+
+
     $(document).ready(function() {
 
 
@@ -135,12 +135,12 @@ var isArabic = /^([\u0600-\u06ff]|[\u0750-\u077f]|[\ufb50-\ufbc1]|[\ufbd3-\ufd3f
 
 
 $("#cautionnement").change(function() {
-          
-          
-          
-           if (document.getElementById('cautionnement').checked) 
+
+
+
+           if (document.getElementById('cautionnement').checked)
   {
-       
+
 
 document.getElementById("price_cautionnement_div").classList.remove('hidden');
   } else {
@@ -148,7 +148,7 @@ document.getElementById("price_cautionnement_div").classList.remove('hidden');
 
 
   }
-        
+
       })
          $("#photo").change(function() {
             var file = this.files[0];
@@ -159,23 +159,23 @@ document.getElementById("price_cautionnement_div").classList.remove('hidden');
                 $("#photo").val('');
                 return false;
             }
-        
+
       })
 
-      
+
 
           $('#city_id').change(function(){
-        $.get("{{ url('villectiy')}}", 
-        { option: $(this).val() }, 
+        $.get("{{ url('villectiy')}}",
+        { option: $(this).val() },
         function(data) {
-            $('#ville_id').empty(); 
+            $('#ville_id').empty();
 
             $.each(data, function(key, element) {
                 $('#ville_id').append("<option value='" + element.id + "'>" + element.name_ar + "</option>");
             });
         });
 
-        
+
     });
 
        });
@@ -193,7 +193,7 @@ document.getElementById("price_cautionnement_div").classList.remove('hidden');
 
        }
 
-  
+
         var map;
 
     function initMap() {
@@ -213,11 +213,11 @@ document.getElementById("price_cautionnement_div").classList.remove('hidden');
             disableDoubleClickZoom: true, // disable the default map zoom on double click
         });
 
-        // Update lat/long value of div when anywhere in the map is clicked    
-       
+        // Update lat/long value of div when anywhere in the map is clicked
+
 
         // Create new marker on double click event on the map
-     
+
 
 
 @if($user->latitude != null)
@@ -228,8 +228,8 @@ document.getElementById("price_cautionnement_div").classList.remove('hidden');
   });
 
 @endif
-       
- 
+
+
     }
 
 </script>

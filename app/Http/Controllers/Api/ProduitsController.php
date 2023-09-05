@@ -40,7 +40,7 @@ class ProduitsController extends Controller
             foreach (Produit::where('DELETED','off')->where('city_id',$keys->id)->where('accepted','Yes')->with('category','user','ville','city')->get() as  $va) {
                 # code...
                 $produits->push($va);
-            }            
+            }
         }
      }else{
         $produitsall = Produit::where('accepted','Yes')->with('category','user','ville','city')->get();
@@ -49,13 +49,13 @@ class ProduitsController extends Controller
             foreach (Produit::where('DELETED','off')->where('city_id',$keys->id)->where('accepted','Yes')->with('category','user','ville','city')->get() as  $va) {
                 # code...
                 $produits->push($va);
-            }            
+            }
         }
      }
 
        // $produits = Produit::where('accepted','Yes')->with('ville','city')->get();
 foreach ($produits as $key => $value) {
- 
+
 
 
 
@@ -67,7 +67,7 @@ $value->linkshare = route('/listing',$value->id);
 
 
  $value->clique_whatsapp = intval($value->clique_whatsapp);
-   
+
 
 $vip1 ="";
 $vip2="";
@@ -135,7 +135,7 @@ if($vip1){
   }
 }
 if($vip2){
-   
+
    if($date < $vip2->dateend)
 {
 
@@ -299,9 +299,9 @@ if(count(favorite::where('produit_id',$value->id)->where('user_id',$request->use
 
     $value->images = Produit_photo::where('produit_id',$value->id)->get();
     foreach ($value->images as $key) {
-        $key->photo = 'ejar/public/images/'.$key->photo;
+        $key->photo = 'images/'.$key->photo;
     }
-            $value->photo = 'ejar/public/images/'.$value->photo;
+            $value->photo = 'images/'.$value->photo;
         }
 
 
@@ -309,7 +309,7 @@ if(count(favorite::where('produit_id',$value->id)->where('user_id',$request->use
 
          $produits = $produits->sortByDesc('updated_at')->sortByDesc('vip2')->values()->all();
         return response()->json($produits);
-      
+
     }
 
     /**
@@ -414,7 +414,7 @@ if(count(favorite::where('produit_id',$value->id)->where('user_id',$request->use
              $data['family'] = 1;
         }
 
-     
+
 
       if($request->On_a_paved_road == null)
         {$data['On_a_paved_road'] = "off";}
@@ -424,9 +424,9 @@ if(count(favorite::where('produit_id',$value->id)->where('user_id',$request->use
       $data['vufb']=0;
       $data['vuweb']=0;
       $data['clique_whatsapp']=0;
- 
 
-            
+
+
             $produit = Produit::create($data);
  $produit->category_id = intval($produit->category_id);
    $produit->price = intval($produit->price);
@@ -434,7 +434,7 @@ if(count(favorite::where('produit_id',$value->id)->where('user_id',$request->use
  $produit->ville_id = intval($produit->ville_id);
  $produit->city_id = intval($produit->city_id);
  $produit->latitude = floatval($produit->latitude);
- $produit->longitude = floatval($produit->longitude);  
+ $produit->longitude = floatval($produit->longitude);
 
 
  $produit->user_id = intval($produit->user_id);
@@ -602,10 +602,10 @@ if($produit->accepted == "off")
     public function show($id)
     {
         $produit = Produit::with('ville','city')->findOrFail($id);
-          $produit->photo = 'ejar/public/images/'.$produit->photo;
+          $produit->photo = 'images/'.$produit->photo;
            $produit->images = Produit_photo::where('produit_id',$id)->get();
             foreach ($produit->images as $key) {
-        $key->photo = 'ejar/public/images/'.$key->photo;
+        $key->photo = 'images/'.$key->photo;
     }
 
  $produit->category_id = intval($produit->category_id);
@@ -614,7 +614,7 @@ if($produit->accepted == "off")
  $produit->ville_id = intval($produit->ville_id);
  $produit->city_id = intval($produit->city_id);
  $produit->latitude = floatval($produit->latitude);
- $produit->longitude = floatval($produit->longitude);  
+ $produit->longitude = floatval($produit->longitude);
 
 
  $produit->user_id = intval($produit->user_id);
@@ -776,7 +776,7 @@ $vip2 = Vip::where('Produit_id',$produit->id)->where('vip',2)->first();
 if($vip2){
     $produit->vip2_date = $vip2->date;
 }
-   
+
 
  return response()->json($produit);
     }
@@ -799,7 +799,7 @@ if($vip2){
             }
 
             $data = $this->getData($request);
-            
+
             $produit = Produit::findOrFail($id);
             $produit->update($data);
 
@@ -835,7 +835,7 @@ if($vip2){
             return $this->errorResponse(trans('produits.unexpected_error'));
         }
     }
-    
+
     /**
      * Gets a new validator instance with the defined rules.
      *
@@ -848,7 +848,7 @@ if($vip2){
         $rules = [
             'name_ar' => 'string|min:1|nullable',
             'name' => 'string|min:1|max:255|nullable',
-          
+
             'discription_ar' => 'string|min:1|nullable',
             'discription' => 'string|min:1|nullable',
             'price' => 'string|min:1|nullable',
@@ -871,7 +871,7 @@ if($vip2){
             'kahramam' => 'string|min:1|nullable',
             'route_principale' => 'string|min:1|nullable',
             'commission' => 'string|min:1|nullable',
-            
+
             'parking' => 'string|min:1|nullable',
             'Piscine' => 'string|min:1|nullable',
             'gym' => 'string|min:1|nullable',
@@ -885,10 +885,10 @@ if($vip2){
             'imprimerie' => 'string|min:1|nullable',
             'DELETED' => 'string|min:1|nullable',
             'accepted' => 'string|min:1|nullable',
-            'furnished' => 'string|min:1|nullable', 
+            'furnished' => 'string|min:1|nullable',
               'Number_of_doors' => 'numeric|nullable',
             'Height' => 'string|min:1|nullable',
-            'On_a_paved_road' => 'string|min:1|nullable', 
+            'On_a_paved_road' => 'string|min:1|nullable',
         ];
 
 
@@ -896,21 +896,21 @@ if($vip2){
         return Validator::make($request->all(), $rules);
     }
 
-    
+
     /**
      * Get the request's data from the request.
      *
-     * @param Illuminate\Http\Request\Request $request 
+     * @param Illuminate\Http\Request\Request $request
      * @return array
      */
     protected function getData(Request $request)
     {
-        
+
           $rules = [
                 'name_ar' => 'string|min:1|nullable',
             'name' => 'string|min:1|max:255|nullable',
              'photo' => 'string|min:1|nullable',
-          
+
             'discription_ar' => 'string|min:1|nullable',
             'discription' => 'string|min:1|nullable',
             'price' => 'string|min:1|nullable',
@@ -933,7 +933,7 @@ if($vip2){
             'kahramam' => 'string|min:1|nullable',
             'route_principale' => 'string|min:1|nullable',
             'commission' => 'string|min:1|nullable',
-            
+
             'parking' => 'string|min:1|nullable',
             'Piscine' => 'string|min:1|nullable',
             'gym' => 'string|min:1|nullable',
@@ -947,22 +947,21 @@ if($vip2){
             'imprimerie' => 'string|min:1|nullable',
             'DELETED' => 'string|min:1|nullable',
             'accepted' => 'string|min:1|nullable',
-            'furnished' => 'string|min:1|nullable', 
+            'furnished' => 'string|min:1|nullable',
               'Number_of_doors' => 'numeric|nullable',
             'Height' => 'string|min:1|nullable',
-            'On_a_paved_road' => 'string|min:1|nullable', 
+            'On_a_paved_road' => 'string|min:1|nullable',
             'metro' => 'nullable',
-            'family' => 'nullable', 
+            'family' => 'nullable',
         ];
-        
+
         $data = $request->validate($rules);
         if ($request->has('custom_delete_photo')) {
             $data['photo'] = null;
         }
-        
+
         $data['category_id'] = $request->category;
         $user = User::find($request->id);
-
         $data['user_id'] = $user->id;
         $data['accepted'] = "off";
         $data['DELETED'] = "off";
@@ -1000,7 +999,7 @@ if($vip2){
     if($request->furnished == null)
         {$data['furnished'] = "off";}
 
-     
+
 
       if($request->On_a_paved_road == null)
         {$data['On_a_paved_road'] = "off";}
@@ -1029,28 +1028,28 @@ if($vip2){
       $data['vufb']=0;
       $data['vuweb']=0;
       $data['clique_whatsapp']=0;
-     
 
 
-  $base64_image =   $data['photo']; // your base64 encoded     
+
+  $base64_image =   $data['photo']; // your base64 encoded
     @list($type, $file_data) = explode(';', $base64_image);
-    @list(, $file_data) = explode(',', $file_data); 
-    $imageName = Str::random(40).'.'.'png';   
+    @list(, $file_data) = explode(',', $file_data);
+    $imageName = Str::random(40).'.'.'png';
            $path =  Storage::disk('images')->put('produit/'.$imageName, base64_decode($file_data));
 
      //Storage::disk('images')->put('produit',  base64_decode($image));
     // Save thumb
-            
+
     $img = InterventionImage::make( base64_decode($file_data))->widen(100);
     Storage::disk('thumbs')->put($path, $img->encode());
             $data['photo'] = 'produit/'.$imageName;
-        
+
 
         return $data;
     }
-  
-   
-    
+
+
+
     /**
      * Transform the giving produit to public friendly array
      *
@@ -1062,7 +1061,7 @@ if($vip2){
     {
         return [
             'id' => $produit->id,
-          
+
             'user_id' => optional($produit->user)->name,
             'name_ar' => $produit->name_ar,
             'name' => $produit->name,
@@ -1118,7 +1117,7 @@ if($vip2){
 
 
  public function vuweb($id)
-    { 
+    {
         $response["success"] = false;
         $produit = Produit::find($id);
         if($produit){
@@ -1131,12 +1130,12 @@ if($vip2){
         $vu->Produit_id = $id;
         $vu->save();
         }
-       
-         return response()->json( $response); 
+
+         return response()->json( $response);
     }
 
  public function clique_whatsapp($id)
-    { 
+    {
         $response["success"] = false;
         $produit = Produit::find($id);
         if($produit){
@@ -1149,12 +1148,12 @@ if($vip2){
         $vu->Produit_id = $id;
         $vu->save();
         }
-         return response()->json( $response); 
+         return response()->json( $response);
     }
 
 
      public function vupost($id)
-    { 
+    {
         $response["success"] = false;
         $produit = Produit::find($id);
         if($produit){
@@ -1167,13 +1166,13 @@ if($vip2){
         $vu->save();
         $response["success"] = true;
         }
-         return response()->json( $response); 
+         return response()->json( $response);
     }
 
 
 
      public function vufb($id)
-    { 
+    {
         $response["success"] = false;
         $produit = Produit::find($id);
         if($produit){
@@ -1186,13 +1185,13 @@ if($vip2){
         $vu->Produit_id = $id;
         $vu->save();
         }
-         return response()->json( $response); 
+         return response()->json( $response);
     }
 
 
 
      public function vuinsta($id)
-    { 
+    {
         $response["success"] = false;
         $produit = Produit::find($id);
         if($produit){
@@ -1205,13 +1204,13 @@ if($vip2){
         $vu->Produit_id = $id;
         $vu->save();
         }
-         return response()->json( $response); 
+         return response()->json( $response);
     }
 
 
 
 
-    
+
 
   public function produitbydestanse(Request $request)
     {
@@ -1223,7 +1222,7 @@ if($vip2){
             foreach (Produit::where('DELETED','off')->where('city_id',$keys->id)->where('accepted','Yes')->with('category','user','ville','city')->get() as  $va) {
                 # code...
                 $produits->push($va);
-            }            
+            }
         }
      }else{
         $produitsall = Produit::where('accepted','Yes')->with('category','user','ville','city')->get();
@@ -1232,14 +1231,14 @@ if($vip2){
             foreach (Produit::where('DELETED','off')->where('city_id',$keys->id)->where('accepted','Yes')->with('category','user','ville','city')->get() as  $va) {
                 # code...
                 $produits->push($va);
-            }            
+            }
         }
      }
 foreach ($produits as $key => $value) {
     $value->destanse = SQRT((
     POW(69.1 * ($value->latitude - $request->latitude), 2) +
     POW(69.1 * ($request->longitude - $value->longitude) * COS($value->latitude / 57.3), 2)) / 0.6214 );
- 
+
  $value->category_id = intval($value->category_id);
 
   $value->price = intval($value->price);
@@ -1247,7 +1246,7 @@ foreach ($produits as $key => $value) {
  $value->ville_id = intval($value->ville_id);
  $value->city_id = intval($value->city_id);
  $value->latitude = floatval($value->latitude);
- $value->longitude = floatval($value->longitude); 
+ $value->longitude = floatval($value->longitude);
 
 
  $value->user_id = intval($value->user_id);
@@ -1380,7 +1379,7 @@ if($value->accepted == "off")
     }else{
       $value->On_a_paved_road = true;
         }
-        
+
  if($value->commission == "off")
         {$value->commission = false;
     }else{
@@ -1436,9 +1435,9 @@ if($vip2){
 }
     $value->images = Produit_photo::where('produit_id',$value->id)->get();
     foreach ($value->images as $key) {
-        $key->photo = 'ejar/public/images/'.$key->photo;
+        $key->photo = 'images/'.$key->photo;
     }
-            $value->photo = 'ejar/public/images/'.$value->photo;
+            $value->photo = 'images/'.$value->photo;
         }
 
 
@@ -1446,14 +1445,14 @@ if($vip2){
 
         $produits = $produits->sortBy('destanse')->values()->all();
         return response()->json($produits);
-      
+
     }
 
  public function indexuser(Request $request)
     {
         $produits = Produit::where('user_id',$request->id)->with('ville','city')->get();
 foreach ($produits as $key => $value) {
- 
+
  $value->category_id = intval($value->category_id);
 
  $value->price = intval($value->price);
@@ -1614,7 +1613,7 @@ if($value->accepted == "off")
         }
 
 
-    
+
 
 
     $value->vip1_date = null;
@@ -1630,9 +1629,9 @@ if($vip2){
 }
     $value->images = Produit_photo::where('produit_id',$value->id)->get();
     foreach ($value->images as $key) {
-        $key->photo = 'ejar/public/images/'.$key->photo;
+        $key->photo = 'images/'.$key->photo;
     }
-            $value->photo = 'ejar/public/images/'.$value->photo;
+            $value->photo = 'images/'.$value->photo;
         }
 
 
@@ -1640,7 +1639,7 @@ if($vip2){
 
          $produits = $produits->sortByDesc('updated_at')->sortByDesc('vip2')->values()->all();
         return response()->json($produits);
-      
+
     }
 
 
@@ -1657,7 +1656,7 @@ if($vip2){
             foreach (Produit::where('DELETED','off')->where('city_id',$keys->id)->where('accepted','Yes')->with('category','user','ville','city')->get() as  $va) {
                 # code...
                 $produits->push($va);
-            }            
+            }
         }
      }else{
         $produitsall = Produit::where('accepted','Yes')->with('category','user','ville','city')->get();
@@ -1666,14 +1665,14 @@ if($vip2){
             foreach (Produit::where('DELETED','off')->where('city_id',$keys->id)->where('accepted','Yes')->with('category','user','ville','city')->get() as  $va) {
                 # code...
                 $produits->push($va);
-            }            
+            }
         }
      }
 foreach ($produits as $key => $value) {
     $value->destanse = SQRT((
     POW(69.1 * ($value->latitude - $request->latitude), 2) +
     POW(69.1 * ($request->longitude - $value->longitude) * COS($value->latitude / 57.3), 2)) / 0.6214 );
- 
+
  $value->category_id = intval($value->category_id);
 
   $value->price = intval($value->price);
@@ -1681,7 +1680,7 @@ foreach ($produits as $key => $value) {
  $value->ville_id = intval($value->ville_id);
  $value->city_id = intval($value->city_id);
  $value->latitude = floatval($value->latitude);
- $value->longitude = floatval($value->longitude); 
+ $value->longitude = floatval($value->longitude);
 
 
  $value->user_id = intval($value->user_id);
@@ -1814,8 +1813,8 @@ if($value->accepted == "off")
     }else{
       $value->On_a_paved_road = true;
         }
-        
-        
+
+
            if($value->metro == "0")
         {$value->metro = false;
     }else{
@@ -1869,13 +1868,13 @@ if($vip2){
 }
     $value->images = Produit_photo::where('produit_id',$value->id)->get();
     foreach ($value->images as $key) {
-        $key->photo = 'ejar/public/images/'.$key->photo;
+        $key->photo = 'images/'.$key->photo;
     }
-            $value->photo = 'ejar/public/images/'.$value->photo;
+            $value->photo = 'images/'.$value->photo;
         }
         $produits = $produits->sortBy('destanse')->values()->all();
         return response()->json($produits);
-      
+
     }
 
 
@@ -2007,7 +2006,7 @@ if($request->category_id != null){
 
 
 
-  
+
 
  }
     if($request->waterElectricity != null){
@@ -2040,7 +2039,7 @@ if($request->category_id != null){
 }
 
 
-       
+
     if($request->roomsCountMin  != null){
         // This will only execute if you received any name
         $query = $query->where('room','>=',$request->roomsCountMin);
@@ -2068,7 +2067,7 @@ if($request->category_id != null){
         // This will only execute if you received any name
         $query = $query->where('salon','<=',$request->salonsCountMax);
     }
-     
+
     if($request->secretaryServices != null){
     if($request->secretaryServices  == 1){
         // This will only execute if you received any name
@@ -2101,14 +2100,14 @@ if($request->category_id != null){
         $query = $query->where('interface','<=',$request->mainInterfaceLengthMax);
     }
 
- 
+
     if($request->mainRoad != null){
     if($request->mainRoad == 1){
         // This will only execute if you received any name
         $query = $query->where('On_a_paved_road','on');
     }
 }
-  
+
     if($request->warehouseHeightMin  != null){
         // This will only execute if you received any name
         $query = $query->where('Height','>=',$request->warehouseHeightMin);
@@ -2132,7 +2131,7 @@ if($request->category_id != null){
 
 
 
-      
+
     if($request->name){
         // This will only execute if you received any name
         $query = $query->where('name','like',$request->name);
@@ -2142,14 +2141,14 @@ if($request->category_id != null){
         // This will only execute if you received any name
         $query = $query->where('name_ar','like',$request->name_ar);
     }
-   
+
 
 
 
 
 
     foreach ($query as $key => $value) {
- 
+
  $value->category_id = intval($value->category_id);
 
  $value->price = intval($value->price);
@@ -2310,7 +2309,7 @@ if($value->accepted == "off")
         }
 
 
-    
+
  $value->favorite = count(favorite::where('produit_id',$value->id)->get());
 
 
@@ -2346,10 +2345,10 @@ if($vip2){
 }
     $value->images = Produit_photo::where('produit_id',$value->id)->get();
     foreach ($value->images as $key) {
-        $key->photo = 'ejar/public/images/'.$key->photo;
+        $key->photo = 'images/'.$key->photo;
     }
-            $value->photo = 'ejar/public/images/'.$value->photo;
-      
+            $value->photo = 'images/'.$value->photo;
+
         }
 
 
@@ -2364,30 +2363,30 @@ if($vip2){
 
 
 // try{
-   $base64_image =  $request->photo; // your base64 encoded     
+   $base64_image =  $request->photo; // your base64 encoded
     @list($type, $file_data) = explode(';', $base64_image);
-    @list(, $file_data) = explode(',', $file_data); 
-    $imageName = Str::random(40).'.'.'png';   
+    @list(, $file_data) = explode(',', $file_data);
+    $imageName = Str::random(40).'.'.'png';
            $path =  Storage::disk('images')->put('produit/'.$imageName, base64_decode($file_data));
 
      //Storage::disk('images')->put('produit',  base64_decode($image));
     // Save thumb
-            
+
     $img = InterventionImage::make( base64_decode($file_data))->widen(100);
     Storage::disk('thumbs')->put($path, $img->encode());
             $data['photo'] = 'produit/'.$path;
-        
+
 
 
          DB::insert('insert into produit_photos (produit_id, photo) values (?, ?)', [$request->id,'produit/'. $imageName]);
 
          $response["success"] = true;
-         return response()->json( $response); 
+         return response()->json( $response);
 // }catch (Exception $exception){
 // $response["success"] = false;
-//          return response()->json( $exception); 
+//          return response()->json( $exception);
 // }
- 
+
     }
 
 

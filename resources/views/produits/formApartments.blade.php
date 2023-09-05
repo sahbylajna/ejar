@@ -14,7 +14,7 @@
             <label class="input-group-btn">
                
                 <span class="btn btn-default" style="background: transparent; border: transparent;">
-                     <img id="blah" src="http://ejar.qa/images/LOGO.png" alt=" " style="height:260px;width:260px;border-radius: 50%;border-style: solid;border-width:2px;border-color:#3C8DBC;" />
+                     <img id="blah" src="{{ asset('images/LOGO-1.png') }}" alt=" " style="height:260px;width:260px;border-radius: 50%;border-style: solid;border-width:2px;border-color:#3C8DBC;" />
                       <input required type="file" name="photo[]" id="photo[]" style="" class="form-control" multiple>
                 </span>
             </label>

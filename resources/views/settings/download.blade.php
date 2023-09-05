@@ -28,7 +28,7 @@
     <div class="flex-col-c p-t-160 p-b-80 respon1">
       <div class="wrappic1">
         <a href="#">
-          <img src="https://www.ejar.qa/images/LOGO.png" style="width: 241px;" alt="IMG">
+          <img src="https://www.ejar.qaimages/LOGO.png" style="width: 241px;" alt="IMG">
         </a>
       </div>
 
@@ -36,10 +36,10 @@
         Ejar - ايجار
         <br>
         <a target="_blank" href="{{ $settingsObject->Link_ios }}">
-       <img src="https://www.ejar.qa/images/pngegg.png" style="width: 241px;" alt="IMG"> 
+       <img src="https://www.ejar.qaimages/pngegg.png" style="width: 241px;" alt="IMG"> 
    </a>
    <a target="_blank" href="{{ $settingsObject->Link_android }}">
-        <img src="https://www.ejar.qa/images/pngeggg.png" style="width: 241px;" alt="IMG">
+        <img src="https://www.ejar.qaimages/pngeggg.png" style="width: 241px;" alt="IMG">
     </a>
       </h3>
 

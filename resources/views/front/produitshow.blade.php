@@ -12,7 +12,7 @@
   @foreach($images as $slider)
 <div class="item">
 <div class="work">
-<div class="img d-flex align-items-center js-fullheight" style="background-image:url({{ asset('/ejar/public/images/' . $slider->photo) }})">
+<div class="img d-flex align-items-center js-fullheight" style="background-image:url({{ asset('images/' . $slider->photo) }})">
 <div class="container-xl">
 <div class="row justify-content-center">
 <div class="col-md-10 col-xl-6">
@@ -91,7 +91,7 @@
 @endif
 
 @if($produit->espacer != null )
- 
+
 
 <div class="col-md-3 text-center d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
 <a href="#" class="services">
@@ -147,7 +147,7 @@
    {{$produit->price}} QAR / month
     @else
     {{$produit->price}} QAR
-                    
+
     @endif</span></span>
 <p>Price</p>
 </div>
@@ -194,16 +194,16 @@
             return element;
         };
     })();
-   
 
-    
 
-  
+
+
+
         var map;
 
     function initMap() {
-        var latitude = 25.213450081603526; // YOUR LATITUDE VALUE
-        var longitude = 51.255206967438085; // YOUR LONGITUDE VALUE
+        var latitude = 18.079059; // YOUR LATITUDE VALUE
+var longitude = -15.965395; // YOUR LONGITUDE VALUE
 
         var myLatLng = {
             lat: latitude,
@@ -216,13 +216,13 @@
       zoom: 9,
       center: myLatLng,
 
-            disableDoubleClickZoom: true, 
+            disableDoubleClickZoom: true,
     }),
     markers = [],
     markerCluster;
 
 
- 
+
 
 
         var location = new google.maps.LatLng({{$produit->latitude}}, {{$produit->longitude}});
@@ -245,9 +245,9 @@
     })();
 
 
-  
+
   markerCluster = new MarkerClusterer(map, markers, {
-    imagePath: 'https://raw.githubusercontent.com/googlemaps/js-marker-clusterer/gh-pages/images/m'
+    imagePath: 'https://raw.githubusercontent.com/googlemaps/js-marker-clusterer/gh-pagesimages/m'
   });
 
     }

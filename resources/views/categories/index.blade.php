@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('css')
 <style type="text/css">
- 
+
 
 .conatiner {
     width: 100%;
@@ -28,7 +28,7 @@
 .box {
     margin: 10px;
     width: 300px;
- 
+
     text-align: center;
     border-radius: 3px;
     -webkit-transition: 200ms ease-in-out;
@@ -408,7 +408,7 @@
             </div>
 
         </div>
-        
+
         @if(count($categories) == 0)
             <div class="panel-body text-center">
                 <h4>{{ trans('categories.none_available') }}</h4>
@@ -419,15 +419,15 @@
 
                 <div class="wrap">
                       @foreach($categories as $category)
-                        <div class="box " style="background: url('{{ asset('/ejar/public/images/'.$category->photo)}}');background-repeat: no-repeat;
+                        <div class="box " style="background: url('{{ asset('images/'.$category->photo)}}');background-repeat: no-repeat;
     background-size: cover;
     background-position: center;">
         <div class="date">
             <h4>{{ $category->name }} </h4>
         </div>
         <h1><a href="{{ route('categories.category.edit', $category->id ) }}" style="color: #fff;">{{ $category->name_ar }}</a></h1>
-        
-    
+
+
     </div>
                @endforeach
 </div>
@@ -448,7 +448,7 @@
                         <tr>
                             <td>{{ $category->name }}</td>
                             <td>{{ $category->name_ar }}</td>
-                            <td><img src="{{ asset('/ejar/public/images/' . $category->photo) }}" style="width: 100px;height: 100px;border-radius:50%;"></td>
+                            <td><img src="{{ asset('images/' . $category->photo) }}" style="width: 100px;height: 100px;border-radius:50%;"></td>
 
                             <td>
 
@@ -470,7 +470,7 @@
                                     </div>
 
                                 </form>
-                                
+
                             </td>
                         </tr>
                     @endforeach
@@ -483,8 +483,8 @@
         <div class="panel-footer">
             {!! $categories->render() !!}
         </div>
-        
+
         @endif
-    
+
     </div>
 @endsection

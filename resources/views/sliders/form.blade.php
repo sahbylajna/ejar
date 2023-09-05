@@ -12,14 +12,14 @@
     <div class="col-md-10">
         <div class="input-group uploaded-file-group">
               @if (isset($slider->photo) && !empty($slider->photo))
-         <img id="blah" src="{{ asset('/ejar/public/images/' . $slider->photo) }}" alt=" " style="height:260px;width:260px;border-style: solid;border-width:2px;border-color:#3C8DBC;" />
+         <img id="blah" src="{{ asset('images/' . $slider->photo) }}" alt=" " style="height:260px;width:260px;border-style: solid;border-width:2px;border-color:#3C8DBC;" />
               @else
-         <img id="blah" src="http://ejar.qa/ejar/public/images/slider/erpQEl0kWQvCBTNCMb66PghDDoZVR8aFR3ye5dEN.jpg" alt=" " style="height:260px;width:260px;border-style: solid;border-width:2px;border-color:#3C8DBC;" />
+         <img id="blah" src="http://ejar.qaimages/slider/erpQEl0kWQvCBTNCMb66PghDDoZVR8aFR3ye5dEN.jpg" alt=" " style="height:260px;width:260px;border-style: solid;border-width:2px;border-color:#3C8DBC;" />
               @endif<br><br>
 <input type='file' name="photo" id="photo" class="form-control" onchange="readURL(this);" required  /><br>
         </div>
 
-     
+
         {!! $errors->first('photo', '<p class="help-block">:message</p>') !!}
     </div>
 </div>

@@ -29,21 +29,21 @@ class FavoritesController extends Controller
         $favoritess = favorite::with('produit')->where('user_id',$request->user_id)->get();
 
         foreach ($favoritess as $favorite) {
-       
+
             if($favorite->produit == null){
                 $favorite->delete();
             }}
  $favorites = favorite::with('produit')->where('user_id',$request->user_id)->get();
  foreach ($favorites as $favorite) {
-         $favorite->produit->photo = 'ejar/public/images/'.$favorite->produit->photo;
-         
+         $favorite->produit->photo = 'images/'.$favorite->produit->photo;
+
  $favorite->produit->category_id = intval($favorite->produit->category_id);
    $favorite->produit->price = intval($favorite->produit->price);
  $favorite->produit->phone = intval($favorite->produit->phone);
  $favorite->produit->ville_id = intval($favorite->produit->ville_id);
  $favorite->produit->city_id = intval($favorite->produit->city_id);
  $favorite->produit->latitude = floatval($favorite->produit->latitude);
- $favorite->produit->longitude = floatval($favorite->produit->longitude);  
+ $favorite->produit->longitude = floatval($favorite->produit->longitude);
 
 $favorite->produit->user = User::find($favorite->produit->user_id);
 $favorite->produit->category = category::find($favorite->produit->category_id);
@@ -68,20 +68,20 @@ $favorite->produit->linkshare = route('/listing',$favorite->produit->id);
 
 $favorite->produit->Number_of_doors = intval($favorite->produit->Number_of_doors);
  $favorite->produit->Height = intval($favorite->produit->Height);
-        
+
         if($favorite->produit->accepted == "off")
                 {$favorite->produit->accepted = false;
         }else{
           $favorite->produit->accepted = true;
         }
-        
-        
+
+
         if($favorite->produit->commission == "off")
                 {$favorite->produit->commission = false;
         }else{
           $favorite->produit->commission = true;
         }
- 
+
 
       if($favorite->produit->rent_sale == "off")
         {$favorite->produit->rent_sale = false;
@@ -220,14 +220,14 @@ if($vip2){
 }
     $favorite->produit->images = Produit_photo::where('produit_id',$favorite->produit->id)->get();
     foreach ($favorite->produit->images as $key) {
-        $key->photo = 'ejar/public/images/'.$key->photo;
+        $key->photo = 'images/'.$key->photo;
     }
-           
+
 
 
 
  $collection->add($favorite->produit);
-         
+
         }
 
        return response()->json($collection);
@@ -257,7 +257,7 @@ if($vip2){
      */
     public function store(Request $request)
     {
-        
+
         try {
             $favorite = favorite::where('produit_id',$request->produit_id)->where('user_id',$request->user_id)->first();
             if(!$favorite){
@@ -270,20 +270,20 @@ if($vip2){
             }
 
             $data = $this->getData($request);
-            
+
             $favorite = favorite::create($data);
             $response["success"] = true;
         }else{
-            
+
 
             $response["success"] = false;
-            
+
             }
          return response()->json( $response);
         } catch (Exception $exception) {
               $response["success"] = false;
-            
-            
+
+
          return response()->json( $response);
             return $this->errorResponse(trans('favorites.unexpected_error'));
         }
@@ -324,7 +324,7 @@ if($vip2){
             }
 
             $data = $this->getData($request);
-            
+
             $favorite = favorite::findOrFail($id);
             $favorite->update($data);
 
@@ -354,14 +354,14 @@ if($vip2){
         }else{
             $response["success"] = false;
         }
-            
+
 
          return response()->json( $response);
         } catch (Exception $exception) {
             return $this->errorResponse(trans('favorites.unexpected_error'));
         }
     }
-    
+
     /**
      * Gets a new validator instance with the defined rules.
      *
@@ -373,26 +373,26 @@ if($vip2){
     {
         $rules = [
             'produit_id' => 'nullable',
-            'user_id' => 'nullable', 
+            'user_id' => 'nullable',
         ];
 
         return Validator::make($request->all(), $rules);
     }
 
-    
+
     /**
      * Get the request's data from the request.
      *
-     * @param Illuminate\Http\Request\Request $request 
+     * @param Illuminate\Http\Request\Request $request
      * @return array
      */
     protected function getData(Request $request)
     {
         $rules = [
                 'produit_id' => 'nullable',
-            'user_id' => 'nullable', 
+            'user_id' => 'nullable',
         ];
-        
+
         $data = $request->validate($rules);
 
 

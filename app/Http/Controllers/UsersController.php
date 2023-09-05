@@ -38,7 +38,7 @@ class UsersController extends Controller
         $villes = Ville::pluck('ville','id')->all();
 $cities = City::all();
       $countries = DB::table('countries')->where('stat',1)->get();
-   
+
         return view('users.create', compact('villes','cities','countries'));
     }
 
@@ -56,7 +56,7 @@ $cities = City::all();
         $request->password = Hash::make($request->password);
             }
             $data = $this->getData($request);
-            
+
             User::create($data);
 
             return redirect()->route('users.user.index')
@@ -109,7 +109,7 @@ $cities = City::all();
     public function update($id, Request $request)
     {
 
- 
+
         try {
             $user = User::findOrFail($id);
             if($request->password != null){
@@ -118,8 +118,8 @@ $cities = City::all();
                 $request->password = $user->password;
             }
             $data = $this->getData1($request);
-            
-            
+
+
             $user->update($data);
 
             return redirect()->route('users.user.index')
@@ -128,7 +128,7 @@ $cities = City::all();
 
             return back()->withInput()
                 ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
-        }        
+        }
     }
 
     /**
@@ -153,11 +153,11 @@ $cities = City::all();
         }
     }
 
-    
+
     /**
      * Get the request's data from the request.
      *
-     * @param Illuminate\Http\Request\Request $request 
+     * @param Illuminate\Http\Request\Request $request
      * @return array
      */
     protected function getData(Request $request)
@@ -183,56 +183,16 @@ $cities = City::all();
             'latitude' => 'nullable',
             'longitude' => 'nullable',
             'remember_token' => 'nullable|string|min:0|max:100',
-            'phone_code' => 'nullable|string|min:0|max:255', 
+            'phone_code' => 'nullable|string|min:0|max:255',
         ];
-        
+
         $data = $request->validate($rules);
 $data['password'] = bcrypt($data['password']);
         $data['type'] =  'user';
  if ($request->hasFile('photo')) {
              $path = Storage::disk('images')->put('slider', $request->file('photo'));
     // Save thumb
-            
-    $img = InterventionImage::make($request->file('photo'))->widen(100);
-    Storage::disk('thumbs')->put($path, $img->encode());
-            $data['photo'] = $path;
-        }
 
-        return $data;
-    }
-
-      protected function getData1(Request $request)
-    {
-        $rules = [
-                'name' => 'required|string|min:1|max:255',
-            'user_name' => 'required|string|min:1|max:255',
-            'email' => 'required|string|min:1|max:255',
-            'email_verified_at' => 'nullable|date_format:j/n/Y g:i A',
-            
-            'phone' => 'nullable|string|min:0|max:255',
-            'photo' => 'nullable|file|min:0|max:255',
-            'rating' => 'nullable|string|min:0|max:255',
-            'siteweb' => 'nullable|string|min:0|max:255',
-            'facebook' => 'nullable|string|min:0|max:255',
-            'instagram' => 'nullable|string|min:0|max:255',
-            'youtube' => 'nullable|string|min:0|max:255',
-            'twitter' => 'nullable|string|min:0|max:255',
-            'whats' => 'nullable|string|min:0|max:255',
-            'type' => 'nullable|string|min:0|max:255',
-            'ville_id' => 'nullable',
-            'city_id' => 'nullable',
-            'latitude' => 'nullable',
-            'longitude' => 'nullable',
-            'remember_token' => 'nullable|string|min:0|max:100',
-            'phone_code' => 'nullable|string|min:0|max:255', 
-        ];
-        
-        $data = $request->validate($rules);
-
- if ($request->hasFile('photo')) {
-             $path = Storage::disk('images')->put('user_photo', $request->file('photo'));
-    // Save thumb
-            
     $img = InterventionImage::make($request->file('photo'))->widen(100);
     Storage::disk('thumbs')->put($path, $img->encode());
             $data['photo'] = $path;
@@ -242,9 +202,7 @@ $data['password'] = bcrypt($data['password']);
     }
 
 
-
-
-     public function updateprofile($id, Request $request)
+    public function updateprofile($id, Request $request)
     {
 
 
@@ -256,41 +214,86 @@ $data['password'] = bcrypt($data['password']);
                 $request->password = $user->password;
             }
             $data = $this->getData1($request);
-            
-     
+
+
             $user->update($data);
 
             return redirect()->route('profile')
                 ->with('success_message', 'تم تحديث الملف الشخصي بنجاح.');
         } catch (Exception $exception) {
-
+dd($exception->getMessage());
             return back()->withInput()
                 ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
-        }        
+        }
     }
+
+
+      protected function getData1(Request $request)
+    {
+        $rules = [
+                'name' => 'required|string|min:1|max:255',
+            'user_name' => 'required|string|min:1|max:255',
+            'email' => 'required|string|min:1|max:255',
+
+
+            'phone' => 'nullable|string|min:0|max:255',
+            'photo' => 'nullable|file',
+
+            'siteweb' => 'nullable|string|min:0|max:255',
+            'facebook' => 'nullable|string|min:0|max:255',
+            'instagram' => 'nullable|string|min:0|max:255',
+            'youtube' => 'nullable|string|min:0|max:255',
+
+            'whats' => 'nullable|string|min:0|max:255',
+
+            'ville_id' => 'nullable',
+            'city_id' => 'nullable',
+            'latitude' => 'nullable',
+            'longitude' => 'nullable',
+
+            'phone_code' => 'nullable|string|min:0|max:255',
+        ];
+
+        $data = $request->validate($rules);
+
+ if ($request->hasFile('photo')) {
+             $path = Storage::disk('images')->put('user_photo', $request->file('photo'));
+    // Save thumb
+
+    $img = InterventionImage::make($request->file('photo'))->widen(100);
+    Storage::disk('thumbs')->put($path, $img->encode());
+            $data['photo'] = $path;
+        }
+
+        return $data;
+    }
+
+
+
+
 
 
      public function storeadmin(Request $request)
     {
 
-       
+
             $id = User::latest()->first()->id;
-       
+
         $id = $id + 1;
         try {
              $user = new User();
         $user->name = 'admin'.$id;
         $user->user_name = 'admin'.$id;
 
-     
+
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
-       
+
         $user->type = 'admin';
-       
+
         $user->photo = 'LOGO.png';
-        
-        
+
+
         $user->save();
         $countrie = countries::find($request->id);
         $countrie->user_id = User::latest()->first()->id;
@@ -298,11 +301,11 @@ $data['password'] = bcrypt($data['password']);
 
 
         return ("success");
-            
+
         } catch (Exception $e) {
-           return ("failed"); 
+           return ("failed");
         }
-       
+
         // return response()->json($request->name);
        }
 
@@ -310,34 +313,34 @@ $data['password'] = bcrypt($data['password']);
         public function editadmin(Request $request)
     {
 
-       
-          
-       
-    
+
+
+
+
         try {
              $user =  User::find($request->id);
-       
-     
+
+
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
-       
-       
-        
+
+
+
         $user->save();
-   
+
 
 
         return ("success");
-            
+
         } catch (Exception $e) {
-           return ("failed"); 
+           return ("failed");
         }
-       
+
         // return response()->json($request->name);
        }
 
 
 
-    
+
 
 }

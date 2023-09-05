@@ -324,7 +324,7 @@ img {
 <td class="header">
 <a href="ejar.qa" style="display: inline-block;">
 
-<img src="ejar.qa/images/LOGO.png" class="logo" alt="Laravel Logo">
+<img src="ejar.qaimages/LOGO.png" class="logo" alt="Laravel Logo">
 
 </a>
 </td>

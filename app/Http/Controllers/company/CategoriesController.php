@@ -22,7 +22,7 @@ class CategoriesController extends Controller
     {
         $categories = category::all();
         foreach ($categories as $key => $value) {
-            $value->photo = 'ejar/public/images/'.$value->photo;
+            $value->photo = 'images/'.$value->photo;
         }
 
         return response()->json($categories);
@@ -45,7 +45,7 @@ class CategoriesController extends Controller
             }
 
             $data = $this->getData($request);
-            
+
             $category = category::create($data);
 
             return $this->successResponse(
@@ -92,7 +92,7 @@ class CategoriesController extends Controller
             }
 
             $data = $this->getData($request);
-            
+
             $category = category::findOrFail($id);
             $category->update($data);
 
@@ -126,7 +126,7 @@ class CategoriesController extends Controller
             return $this->errorResponse(trans('categories.unexpected_error'));
         }
     }
-    
+
     /**
      * Gets a new validator instance with the defined rules.
      *
@@ -139,17 +139,17 @@ class CategoriesController extends Controller
         $rules = [
             'name' => 'string|min:1|max:255|nullable',
             'name_ar' => 'string|min:1|nullable',
-            'photo' => ['file','nullable'], 
+            'photo' => ['file','nullable'],
         ];
 
         return Validator::make($request->all(), $rules);
     }
 
-    
+
     /**
      * Get the request's data from the request.
      *
-     * @param Illuminate\Http\Request\Request $request 
+     * @param Illuminate\Http\Request\Request $request
      * @return array
      */
     protected function getData(Request $request)
@@ -157,9 +157,9 @@ class CategoriesController extends Controller
         $rules = [
                 'name' => 'string|min:1|max:255|nullable',
             'name_ar' => 'string|min:1|nullable',
-            'photo' => ['file','nullable'], 
+            'photo' => ['file','nullable'],
         ];
-        
+
         $data = $request->validate($rules);
         if ($request->has('custom_delete_photo')) {
             $data['photo'] = null;
@@ -170,7 +170,7 @@ class CategoriesController extends Controller
 
         return $data;
     }
-  
+
     /**
      * Moves the attached file to the server.
      *

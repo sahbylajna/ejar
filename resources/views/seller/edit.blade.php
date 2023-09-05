@@ -110,9 +110,9 @@ input:checked + .slider .off
 
     <div class="panel panel-default">
 
-     
-        
-  
+
+
+
         <div class="panel-body panel-body-with-table">
             <div  class="form-horizontal">
 <form method="POST" action="{{ route('seller.seller.update', $user->id) }}" id="edit_user_form" name="edit_user_form" accept-charset="UTF-8" enctype="multipart/form-data" class="form-horizontal">
@@ -123,24 +123,24 @@ input:checked + .slider .off
       <h3 class="panel-title">{{trans('produits.info_general') }}
 </h3>
      </div>
-     
+
        <div class="panel-body">
-                  <div class="content"> 
+                  <div class="content">
 <div class="form-group {{ $errors->has('photo') ? 'has-error' : '' }}">
     <label for="photo" class="col-md-2 control-label">{{ trans('produits.photo') }}</label>
     <div class="col-md-10">
         <div class="input-group uploaded-file-group">
             <label class="input-group-btn">
-               
+
                 <span class="btn btn-default" style="background: transparent; border: transparent;">
-                     <img id="blah" src="{{ asset('/ejar/public/images/' . $user->photo) }}" alt=" " style="height:260px;width:260px;border-radius: 50%;border-style: solid;border-width:2px;border-color:#3C8DBC;" />
+                     <img id="blah" src="{{ asset('images/' . $user->photo) }}" alt=" " style="height:260px;width:260px;border-radius: 50%;border-style: solid;border-width:2px;border-color:#3C8DBC;" />
                       <input type="file" name="photo" onchange="readURL(this)" id="photo" style="" class="form-control" multiple>
                 </span>
             </label>
-          
+
         </div>
 
-       
+
         {!! $errors->first('photo', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
@@ -199,7 +199,7 @@ input:checked + .slider .off
 
 
 
-</div>         
+</div>
 </div>
 </div>
 </div>
@@ -210,20 +210,20 @@ input:checked + .slider .off
 <div class="panel-heading clearfixr">
       <h3 class="panel-title">{{trans('user.info_localication') }}</h3>
      </div>
-     
+
        <div class="panel-body">
-                  <div class="content"> 
-                  
+                  <div class="content">
+
                    {{trans('produits.click_map') }}
           <!---------- el map ------------->
          <div class="form-group col-sm-12" style="padding:10px">
             <div id="mape" style="    height: 300px;width: 400; "></div>
-        </div> 
+        </div>
         </div>
          </div>
                <div class="panel-body">
-                 
-                 
+
+
                 <div class="form-group col-sm-12">
                   <label for="latitude" class="col-sm-2 control-label">{{trans('produits.Latitude') }}</label>
                    <div class="form-group col-sm-10">
@@ -248,7 +248,7 @@ input:checked + .slider .off
                 <option value="{{$value->id}}" {{ old('city_id', optional($user)->city->countre_id) == $value->id ? 'selected' : '' }}>{{$value->name}}</option>
                 @endforeach
             </select>
-        
+
     </div>
 </div>
 
@@ -265,7 +265,7 @@ input:checked + .slider .off
                 </option>
             @endforeach
         </select>
-        
+
         {!! $errors->first('city_id', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
@@ -276,16 +276,16 @@ input:checked + .slider .off
             @if($user->ville)
             <option value="{{$user->ville_id}}" selected>{{$user->ville->name_ar}}</option>
             @endif
-           
-           
+
+
         </select>
-        
+
         {!! $errors->first('ville_id', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
 
 </div>
-            
+
 </div>
 </div>
 
@@ -297,9 +297,9 @@ input:checked + .slider .off
 <div class="panel-heading clearfixr">
       <h3 class="panel-title">{{trans('produits.info_sociale_média') }}</h3>
      </div>
-     
+
        <div class="panel-body">
-                  <div class="content"> 
+                  <div class="content">
 
 
 
@@ -339,14 +339,14 @@ input:checked + .slider .off
 
 </div>
 </div>
-            
+
 </div>
 </div>
 
 
 
 
-   
+
 
  <div class="form-group">
                     <div class="col-md-12"style="justify-content: center; display: flex;">
@@ -360,14 +360,14 @@ input:checked + .slider .off
 
 
 
-             
+
             </div>
         </div>
 
-       
-        
-      
-    
+
+
+
+
     </div>
 @endsection
 
@@ -397,8 +397,8 @@ input:checked + .slider .off
             return element;
         };
     })();
-   
-    
+
+
     $(document).ready(function() {
 
 
@@ -425,12 +425,12 @@ var isArabic = /^([\u0600-\u06ff]|[\u0750-\u077f]|[\ufb50-\ufbc1]|[\ufbd3-\ufd3f
 
 
 $("#cautionnement").change(function() {
-          
-          
-          
-           if (document.getElementById('cautionnement').checked) 
+
+
+
+           if (document.getElementById('cautionnement').checked)
   {
-       
+
 
 document.getElementById("price_cautionnement_div").classList.remove('hidden');
   } else {
@@ -438,7 +438,7 @@ document.getElementById("price_cautionnement_div").classList.remove('hidden');
 
 
   }
-        
+
       })
          $("#photo").change(function() {
             var file = this.files[0];
@@ -449,16 +449,16 @@ document.getElementById("price_cautionnement_div").classList.remove('hidden');
                 $("#photo").val('');
                 return false;
             }
-        
+
       })
 
-      
+
 
           $('#city_id').change(function(){
-        $.get("{{ url('villectiy')}}", 
-        { option: $(this).val() }, 
+        $.get("{{ url('villectiy')}}",
+        { option: $(this).val() },
         function(data) {
-            $('#ville_id').empty(); 
+            $('#ville_id').empty();
 
             $.each(data, function(key, element) {
                 $('#ville_id').append("<option value='" + element.id + "'>" + element.name_ar + "</option>");
@@ -467,21 +467,21 @@ document.getElementById("price_cautionnement_div").classList.remove('hidden');
 
 
 
-        
+
     });
 
             $('#countries').change(function(){
-        $.get("{{ url('getcountries')}}", 
-        { option: $(this).val() }, 
+        $.get("{{ url('getcountries')}}",
+        { option: $(this).val() },
         function(data) {
-            $('#city_id').empty(); 
+            $('#city_id').empty();
 
             $.each(data, function(key, element) {
                 $('#city_id').append("<option value='" + element.id + "'>" + element.name_ar + "</option>");
             });
         });
 
-        
+
     });
 
        });
@@ -499,12 +499,12 @@ document.getElementById("price_cautionnement_div").classList.remove('hidden');
 
        }
 
-  
+
         var map;
 
     function initMap() {
-        var latitude = 25.213450081603526; // YOUR LATITUDE VALUE
-        var longitude = 51.255206967438085; // YOUR LONGITUDE VALUE
+        var latitude = 18.079059; // YOUR LATITUDE VALUE
+var longitude = -15.965395; // YOUR LONGITUDE VALUE
 
         var myLatLng = {
             lat: latitude,
@@ -519,7 +519,7 @@ document.getElementById("price_cautionnement_div").classList.remove('hidden');
             disableDoubleClickZoom: true, // disable the default map zoom on double click
         });
 
-        // Update lat/long value of div when anywhere in the map is clicked    
+        // Update lat/long value of div when anywhere in the map is clicked
         google.maps.event.addListener(map, 'click', function(event) {
             $("#latitude").val(event.latLng.lat());
             $("#longitude").val(event.latLng.lng());
@@ -533,7 +533,7 @@ document.getElementById("price_cautionnement_div").classList.remove('hidden');
                 title: event.latLng.lat() + ', ' + event.latLng.lng()
             });
 
-  
+
 
 
         });
@@ -547,8 +547,8 @@ document.getElementById("price_cautionnement_div").classList.remove('hidden');
   });
 
 @endif
-       
- 
+
+
     }
 
 </script>

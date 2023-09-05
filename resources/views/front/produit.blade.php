@@ -3,7 +3,7 @@
 @section('css')
 <style type="text/css">
   .header-hero {
- background-image: url({{ asset('/ejar/public/images/'.$category->photo)}}); 
+ background-image: url({{ asset('images/'.$category->photo)}});
  }
 </style>
 @endsection
@@ -15,7 +15,7 @@
 
 
 
-<section class="hero-wrap hero-wrap-2" style="background-image:url({{ asset('/ejar/public/thumbs/'.$category->photo)}})">
+<section class="hero-wrap hero-wrap-2" style="background-image:url({{ asset('/thumbs/'.$category->photo)}})">
 <div class="overlay"></div>
 <div class="container">
 <div class="row no-gutters slider-text align-items-center justify-content-center">
@@ -209,7 +209,7 @@
 
 <div class="col-md-3" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
 <div class="property-wrap">
-<a href="{{url('/listing/'.$produit->id)}}" class="img img-property" style="background-image:url({{ asset('/ejar/public/images/' . $produit->photo) }})">
+<a href="{{url('/listing/'.$produit->id)}}" class="img img-property" style="background-image:url({{ asset('images/' . $produit->photo) }})">
 <p class="price"><span class="orig-price">{{ $produit->price }}</span></p>
 </a>
 <div class="text">
@@ -276,16 +276,16 @@
             return element;
         };
     })();
-   
 
-    
 
-  
+
+
+
         var map;
 
     function initMap() {
-        var latitude = 25.213450081603526; // YOUR LATITUDE VALUE
-        var longitude = 51.255206967438085; // YOUR LONGITUDE VALUE
+        var latitude = 18.079059; // YOUR LATITUDE VALUE
+var longitude = -15.965395; // YOUR LONGITUDE VALUE
 
         var myLatLng = {
             lat: latitude,
@@ -298,7 +298,7 @@
       zoom: 9,
       center: myLatLng,
 
-            disableDoubleClickZoom: true, 
+            disableDoubleClickZoom: true,
     }),
     markers = [],
     markerCluster;
@@ -333,14 +333,14 @@
 
   }
   markerCluster = new MarkerClusterer(map, markers, {
-    imagePath: 'https://raw.githubusercontent.com/googlemaps/js-marker-clusterer/gh-pages/images/m'
+    imagePath: 'https://raw.githubusercontent.com/googlemaps/js-marker-clusterer/gh-pagesimages/m'
   });
 
     }
 
-     
 
-        
+
+
 </script>
 
 

@@ -219,6 +219,20 @@ Route::get('test', function () {
     $username = 'botble';
 
 
+    $curl = curl_init();
+
+    curl_setopt_array($curl, array(
+      CURLOPT_URL => 'https://api.countrystatecity.in/v1/countries',
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_HTTPHEADER => array(
+        'X-CSCAPI-KEY: API_KEY'
+      ),
+    ));
+    
+    $response = curl_exec($curl);
+    
+    curl_close($curl);
+    echo $response;
     $countriesObjects = countries::where('stat','1')->get();
     foreach ($countriesObjects as $key => $value) {
         $countryCode =  $value->iso; // Country code for Qatar
@@ -227,43 +241,43 @@ Route::get('test', function () {
 
         $response = file_get_contents($url);
         $data = json_decode($response, true);
-
+dd($data);
         $cities = [];
         foreach ($data['geonames'] as $city) {
 
-            // $newcity = new City();
-            // $newcity->name = $city['name'];
-            // $newcity->name_ar = $city['name'];
-            // $newcity->countre_id = $value->id;
-            // $newcity->save();
+            $newcity = new City();
+            $newcity->name = $city['name'];
+            $newcity->name_ar = $city['name'];
+            $newcity->countre_id = $value->id;
+            $newcity->save();
         }
 
     }
 
 
-    dd($data);
-    try{
-        $client2 = new ClientHTTP();
-        $res = $client2->request('GET', 'https://countriesnow.space/api/v0.1/countries/cities', [
-            'headers' => [
-                'Content-Type' => 'application/json',
-            ],
 
-            GuzzleHttp\RequestOptions::JSON => [
-                'country' => 'qatar',
-            ],
+    // try{
+    //     $client2 = new ClientHTTP();
+    //     $res = $client2->request('GET', 'https://countriesnow.space/api/v0.1/countries/cities', [
+    //         'headers' => [
+    //             'Content-Type' => 'application/json',
+    //         ],
 
-            'json' => json_encode(
-                [
-                    'country' => 'qatar',
-                ]
-                ),
+    //         GuzzleHttp\RequestOptions::JSON => [
+    //             'country' => 'qatar',
+    //         ],
 
-        ]);
-        dd($res->getBody());
-    }catch(Exception $exception) {
-    dd($exception->getMessage());
-    }
+    //         'json' => json_encode(
+    //             [
+    //                 'country' => 'qatar',
+    //             ]
+    //             ),
+
+    //     ]);
+    //     dd($res->getBody());
+    // }catch(Exception $exception) {
+    // dd($exception->getMessage());
+    // }
 
 
 });

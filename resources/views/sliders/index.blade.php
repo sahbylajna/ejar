@@ -14,7 +14,7 @@
         </div>
     @endif
 
-              
+
 
                <div class="panel-heading clearfix">
 
@@ -32,7 +32,7 @@
 
     <div class="row">
 
-        
+
         @if(count($sliders) == 0)
             <div class="panel-body text-center">
                 <h4>{{ trans('sliders.none_available') }}</h4>
@@ -58,7 +58,7 @@
                             <td>{{ $slider->link }}</td>
                             <td>{{ $slider->Date_start }}</td>
                             <td>{{ $slider->Date_end }}</td>
-                            <td><img src="{{ asset('/ejar/public/thumbs/' . $slider->photo) }}"></td>
+                            <td><img src="{{ asset('/thumbs/' . $slider->photo) }}"></td>
 
                             <td>
 
@@ -75,12 +75,12 @@
                                         </a>
 
                                         <button type="submit" class="btn btn-danger" title="{{ trans('sliders.delete') }}" onclick="return confirm(&quot;{{ trans('sliders.confirm_delete') }}&quot;)">
-                                           {{ trans('sliders.delete') }} 
+                                           {{ trans('sliders.delete') }}
                                         </button>
                                     </div>
 
                                 </form>
-                                
+
                             </td>
                         </tr>
                     @endforeach
@@ -93,8 +93,8 @@
         <div class="panel-footer">
             {!! $sliders->render() !!}
         </div>
-        
+
         @endif
-    
+
     </div>
 @endsection

@@ -26,7 +26,7 @@ class SlidersController extends Controller
         $sliders = Slider::where('countre_id',Auth::user()->countries->id)->paginate(25);
     }
 
-        
+
 
         return view('sliders.index', compact('sliders'));
     }
@@ -38,8 +38,8 @@ class SlidersController extends Controller
      */
     public function create()
     {
-        
-        
+
+
         return view('sliders.create');
     }
 
@@ -53,9 +53,9 @@ class SlidersController extends Controller
     public function store(Request $request)
     {
         try {
-            
+
             $data = $this->getData($request);
-            
+
             Slider::create($data);
 
             return redirect()->route('sliders.slider.index')
@@ -63,7 +63,7 @@ class SlidersController extends Controller
         } catch (Exception $exception) {
 
             return back()->withInput()
-                ->withErrors(['unexpected_error' => trans('sliders.unexpected_error')]);
+                ->withErrors(['unexpected_error' => $exception->getMessage()]);
         }
     }
 
@@ -91,7 +91,7 @@ class SlidersController extends Controller
     public function edit($id)
     {
         $slider = Slider::findOrFail($id);
-        
+
 
         return view('sliders.edit', compact('slider'));
     }
@@ -107,9 +107,9 @@ class SlidersController extends Controller
     public function update($id, Request $request)
     {
         try {
-            
+
             $data = $this->getData($request);
-            
+
             $slider = Slider::findOrFail($id);
             $slider->update($data);
 
@@ -119,7 +119,7 @@ class SlidersController extends Controller
 
             return back()->withInput()
                 ->withErrors(['unexpected_error' => trans('sliders.unexpected_error')]);
-        }        
+        }
     }
 
     /**
@@ -144,11 +144,11 @@ class SlidersController extends Controller
         }
     }
 
-    
+
     /**
      * Get the request's data from the request.
      *
-     * @param Illuminate\Http\Request\Request $request 
+     * @param Illuminate\Http\Request\Request $request
      * @return array
      */
     protected function getData(Request $request)
@@ -157,9 +157,9 @@ class SlidersController extends Controller
                 'link' => 'string|min:1|nullable',
             'photo' => ['file','nullable'],
             'Date_start' => 'nullable',
-            'Date_end' => 'nullable', 
+            'Date_end' => 'nullable',
         ];
-        
+
         $data = $request->validate($rules);
         if ($request->has('custom_delete_photo')) {
             $data['photo'] = null;
@@ -167,16 +167,17 @@ class SlidersController extends Controller
         if ($request->hasFile('photo')) {
              $path = Storage::disk('images')->put('slider', $request->file('photo'));
     // Save thumb
-            
+
     $img = InterventionImage::make($request->file('photo'))->widen(100);
     Storage::disk('thumbs')->put($path, $img->encode());
             $data['photo'] = $path;
 
         }
-        $data['countre_id']=Auth::user()->countries->id;
+      //  dd(Auth::user()->countries->id);
+        $data['countre_id']=1;
         return $data;
     }
-  
+
     /**
      * Moves the attached file to the server.
      *
@@ -189,7 +190,7 @@ class SlidersController extends Controller
         if (!$file->isValid()) {
             return '';
         }
-        
+
 
         $path = config('laravel-code-generator.files_upload_path', 'uploads');
 

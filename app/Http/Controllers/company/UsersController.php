@@ -24,9 +24,9 @@ class UsersController extends Controller
     {
         $users = User::with('ville','city')->get();
 
-     
+
         foreach ($users as $key => $value) {
-            $value->photo = 'ejar/public/images/'.$value->photo;
+            $value->photo = 'images/'.$value->photo;
         }
 
         return response()->json($users);
@@ -50,11 +50,11 @@ class UsersController extends Controller
             }
 
             $data = $this->getData($request);
-            
+
             $user = User::create($data);
 
             $users = User::Where('email',$request->email)->first();
-             $users->photo = 'ejar/public/images/'.$user->photo;
+             $users->photo = 'images/'.$user->photo;
   return Response::json(array('success' => true,'user'=>$users->id, 'error' => null));
 
         } catch (Exception $exception) {
@@ -72,7 +72,7 @@ class UsersController extends Controller
     public function show($id)
     {
         $user = User::with('ville','city')->findOrFail($id);
-         $user->photo = 'ejar/public/images/'.$user->photo;
+         $user->photo = 'images/'.$user->photo;
          $user->phone = intval($user->phone);
          $user->whats = intval($user->whats);
 
@@ -82,7 +82,7 @@ class UsersController extends Controller
 
       public function Settings()
     {
-        
+
       $Settings = Settings::take(1)->get();
         return response()->json($Settings);
     }
@@ -105,7 +105,7 @@ class UsersController extends Controller
             }
 
             $data = $this->getData($request);
-            
+
             $user = User::findOrFail($id);
             $user->update($data);
 
@@ -139,7 +139,7 @@ class UsersController extends Controller
             return $this->errorResponse('Unexpected error occurred while trying to process your request.');
         }
     }
-    
+
     /**
      * Gets a new validator instance with the defined rules.
      *
@@ -168,17 +168,17 @@ class UsersController extends Controller
             'ville_id' => 'nullable',
             'city_id' => 'nullable',
             'remember_token' => 'nullable|string|min:0|max:100',
-            'phone_code' => 'nullable|string|min:0|max:255', 
+            'phone_code' => 'nullable|string|min:0|max:255',
         ];
 
         return Validator::make($request->all(), $rules);
     }
 
-    
+
     /**
      * Get the request's data from the request.
      *
-     * @param Illuminate\Http\Request\Request $request 
+     * @param Illuminate\Http\Request\Request $request
      * @return array
      */
     protected function getData(Request $request)
@@ -187,7 +187,7 @@ class UsersController extends Controller
                 'name' => 'required|string|min:1|max:255',
             'user_name' => 'required|string|min:1|max:255',
             'email' => 'required|string|min:1|max:255',
-            
+
             'password' => 'required|string|min:1|max:255',
             'phone' => 'nullable|string|min:0|max:255',
             'photo' => ['file','nullable'],
@@ -202,15 +202,15 @@ class UsersController extends Controller
             'ville_id' => 'nullable',
             'city_id' => 'nullable',
             'remember_token' => 'nullable|string|min:0|max:100',
-            'phone_code' => 'nullable|string|min:0|max:255', 
+            'phone_code' => 'nullable|string|min:0|max:255',
         ];
 
-        
+
         $data = $request->validate($rules);
          if ($request->hasFile('photo')) {
              $path = Storage::disk('images')->put('user_photo', $request->file('photo'));
     // Save thumb
-            
+
     $img = InterventionImage::make($request->file('photo'))->widen(100);
     Storage::disk('thumbs')->put($path, $img->encode());
             $data['photo'] = $path;
@@ -258,7 +258,7 @@ class UsersController extends Controller
 
 
     public function produituser(Request $request){
-       
+
         try{
              $user = User::find( $request->id);
 $countries = DB::table('countries')->where('id',$user->city->countre_id)->first();
@@ -270,7 +270,7 @@ $countries = DB::table('countries')->where('id',$user->city->countre_id)->first(
        return response()->json($data);
 
         }
-    
+
     }
 
 

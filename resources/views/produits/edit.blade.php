@@ -173,8 +173,8 @@
         var map;
 
     function initMap() {
-        var latitude = 25.213450081603526; // YOUR LATITUDE VALUE
-        var longitude = 51.255206967438085; // YOUR LONGITUDE VALUE
+        var latitude = 18.079059; // YOUR LATITUDE VALUE
+var longitude = -15.965395; // YOUR LONGITUDE VALUE
 
         var myLatLng = {
             lat: latitude,

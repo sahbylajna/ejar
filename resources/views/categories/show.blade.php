@@ -22,7 +22,7 @@
                     <a href="{{ route('categories.category.create') }}" class="btn btn-success" title="{{ trans('categories.create') }}">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     </a>
-                    
+
                     <a href="{{ route('categories.category.edit', $category->id ) }}" class="btn btn-primary" title="{{ trans('categories.edit') }}">
                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                     </a>
@@ -44,7 +44,7 @@
             <dt>{{ trans('categories.name_ar') }}</dt>
             <dd>{{ $category->name_ar }}</dd>
             <dt>{{ trans('categories.photo') }}</dt>
-            <dd> <img src="{{ asset('/ejar/public/images/' . $category->photo) }}" style="width: 200px;height: 200px;border-radius:50%;"></dd>
+            <dd> <img src="{{ asset('images/' . $category->photo) }}" style="width: 200px;height: 200px;border-radius:50%;"></dd>
 
         </dl>
 

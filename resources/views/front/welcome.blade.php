@@ -3,7 +3,7 @@
 @section('css')
 <style type="text/css">
   .header-hero {
- background-image: url({{asset('/ejar/public/images/home.jpg')}}); 
+ background-image: url({{asset('images/home.jpg')}});
  }
 </style>
 @endsection
@@ -15,16 +15,16 @@
     @foreach($sliders as $key => $slider)
     @if($key == 0)
     <div class="carousel-item active">
-      <img class="d-block w-100" src="{{ asset('/ejar/public/images/'.$slider->photo)}}" alt="First slide">
+      <img class="d-block w-100" src="{{ asset('images/'.$slider->photo)}}" alt="First slide">
     </div>
     @else
      <div class="carousel-item ">
-      <img class="d-block w-100" src="{{ asset('/ejar/public/images/'.$slider->photo)}}" alt="First slide">
+      <img class="d-block w-100" src="{{ asset('images/'.$slider->photo)}}" alt="First slide">
     </div>
     @endif
     @endforeach
-    
-   
+
+
   </div>
 </div>
 </section>
@@ -34,7 +34,7 @@
 
 <div class="hp-listing-categories hp-grid hp-block">
   <div class="hp-row">
-  
+
 @foreach($categories as $category)
   <div class="hp-grid__item hp-col-sm-3 hp-col-xs-12">
   <article class="hp-listing-category hp-listing-category--view-block" style="height: 261px;">
@@ -43,7 +43,7 @@
 
 <a href="{{url('/listing-category/'.$category->id)}}">
 
-<img src="{{ asset('/ejar/public/images/'.$category->photo)}}" alt="Houses" loading="lazy">
+<img src="{{ asset('images/'.$category->photo)}}" alt="Houses" loading="lazy">
 
 </a>
 </div>
@@ -81,12 +81,12 @@
 <div class="hp-grid__item hp-col-sm-4 hp-col-xs-12">
   <article class="hp-listing hp-listing--view-block hp-listing--featured">
   <header class="hp-listing__header">
-  
+
 <div class="hp-listing__image">
 
 <a href="{{url('/listing/'.$produit->id)}}">
 
-<img src="{{ asset('/ejar/public/images/'.$produit->photo)}}" style="width: 360px;height: 240px;" alt="Stylish remodeled room" loading="lazy">
+<img src="{{ asset('images/'.$produit->photo)}}" style="width: 360px;height: 240px;" alt="Stylish remodeled room" loading="lazy">
 
 </a>
 </div>
@@ -119,7 +119,7 @@
 </div>
 
 <time class="hp-listing__created-date hp-listing__date hp-meta" datetime="2019-06-30 11:32:04">
-Added on {{$produit->created_at}} 
+Added on {{$produit->created_at}}
 </time>
 
 </div>
@@ -191,7 +191,7 @@ Added on {{$produit->created_at}}
    {{$produit->price}} QAR / month
     @else
     {{$produit->price}} QAR
-                    
+
     @endif
 
 </div>
@@ -265,12 +265,12 @@ Added on {{$produit->created_at}}
 <div class="hp-grid__item hp-col-sm-4 hp-col-xs-12">
   <article class="hp-listing hp-listing--view-block hp-listing--featured">
   <header class="hp-listing__header">
-  
+
 <div class="hp-listing__image">
 
 <a href="{{url('/listing/'.$produit->id)}}">
 
-<img src="{{ asset('/ejar/public/images/'.$produit->photo)}}" style="width: 360px;height: 240px;" alt="Stylish remodeled room" loading="lazy">
+<img src="{{ asset('images/'.$produit->photo)}}" style="width: 360px;height: 240px;" alt="Stylish remodeled room" loading="lazy">
 
 </a>
 </div>
@@ -303,7 +303,7 @@ Added on {{$produit->created_at}}
 </div>
 
 <time class="hp-listing__created-date hp-listing__date hp-meta" datetime="2019-06-30 11:32:04">
-Added on {{$produit->created_at}} 
+Added on {{$produit->created_at}}
 </time>
 
 </div>
@@ -375,7 +375,7 @@ Added on {{$produit->created_at}}
    {{$produit->price}} QAR / month
     @else
     {{$produit->price}} QAR
-                    
+
     @endif
 
 </div>
@@ -449,12 +449,12 @@ Added on {{$produit->created_at}}
 <div class="hp-grid__item hp-col-sm-4 hp-col-xs-12">
   <article class="hp-listing hp-listing--view-block hp-listing--featured">
   <header class="hp-listing__header">
-  
+
 <div class="hp-listing__image">
 
 <a href="{{url('/listing/'.$produit->id)}}">
 
-<img src="{{ asset('/ejar/public/images/'.$produit->photo)}}" style="width: 360px;height: 240px;" alt="Stylish remodeled room" loading="lazy">
+<img src="{{ asset('images/'.$produit->photo)}}" style="width: 360px;height: 240px;" alt="Stylish remodeled room" loading="lazy">
 
 </a>
 </div>
@@ -487,7 +487,7 @@ Added on {{$produit->created_at}}
 </div>
 
 <time class="hp-listing__created-date hp-listing__date hp-meta" datetime="2019-06-30 11:32:04">
-Added on {{$produit->created_at}} 
+Added on {{$produit->created_at}}
 </time>
 
 </div>
@@ -559,7 +559,7 @@ Added on {{$produit->created_at}}
    {{$produit->price}} QAR / month
     @else
     {{$produit->price}} QAR
-                    
+
     @endif
 
 </div>
