@@ -83,7 +83,7 @@
 <li><a href="buy-list-map.html">Buy List with map</a></li>
 <li><a href="buy-details.html">Buy Details</a></li>
 </ul>
-</li> 
+</li>
 <li class="has-submenu">
 <a href="javascript:void(0);">Rent Property</a>
 <ul class="submenu">
@@ -95,7 +95,7 @@
 <li><a href="rent-list-map.html">Rent List with map</a></li>
 <li><a href="rent-details.html">Rent Details</a></li>
 </ul>
-</li> 
+</li>
 </ul>
 </li>--}}
 {{-- <li class="has-submenu">
@@ -181,11 +181,11 @@
     <li>
         <a href="register.html" class="btn btn-primary"><i class="feather-user-plus"></i>Sign Up</a>
         </li>
-        
+
         <li>
         <a href="login.html" class="btn sign-btn"><i class="feather-unlock"></i>Sign In</a>
         </li>
-        
+
 
     @else
     <li class="new-property-btn">
@@ -211,8 +211,8 @@
 
 
 <section class="cities-list-sec">
-<div class="container">
-<div class="section-heading">
+    <div class="container">
+    <div class="section-heading">
 <h2>Cities With Listing</h2>
 <div class="sec-line">
 <span class="sec-line1"></span>
@@ -221,11 +221,11 @@
 <p>Destinations we love the most</p>
 </div>
 <div class="row">
-<div class="col-lg-12">
-<div class="city-card-slider owl-carousel">
-<div class="city-first-card" data-aos="fade-down" data-aos-duration="2000">
-<div class="city-list">
-<div class="city-img">
+    <div class="col-lg-12">
+    <div class="city-card-slider owl-carousel">
+    <div class="city-first-card" data-aos="fade-down" data-aos-duration="2000">
+    <div class="city-list">
+    <div class="city-img">
 <img src="Front/assets/img/city/city-1.jpg" alt="City">
 </div>
 <div class="city-name">
@@ -237,7 +237,7 @@
 </div>
 </div>
 <div class="city-list">
-<div class="city-img">
+    <div class="city-img">
 <img src="Front/assets/img/city/city-2.jpg" alt="City">
 </div>
 <div class="city-name">
@@ -250,8 +250,8 @@
 </div>
 </div>
 <div class="city-card-two" data-aos="fade-down" data-aos-duration="2000">
-<div class="city-list">
-<div class="city-img">
+    <div class="city-list">
+    <div class="city-img">
 <img src="Front/assets/img/city/city-3.jpg" alt="City">
 </div>
 <div class="city-name">
@@ -263,7 +263,7 @@
 </div>
 </div>
 <div class="city-list">
-<div class="city-img">
+    <div class="city-img">
 <img src="Front/assets/img/city/city-4.jpg" alt="City">
 </div>
 <div class="city-name">
@@ -276,8 +276,8 @@
 </div>
 </div>
 <div class="city-card-three" data-aos="fade-down" data-aos-duration="2000">
-<div class="city-list">
-<div class="city-img">
+    <div class="city-list">
+    <div class="city-img">
 <img src="Front/assets/img/city/city-5.jpg" alt="City">
 </div>
 <div class="city-name">
@@ -289,7 +289,7 @@
 </div>
 </div>
 <div class="city-list">
-<div class="city-img">
+    <div class="city-img">
 <img src="Front/assets/img/city/city-1.jpg" alt="City">
 </div>
 <div class="city-name">
@@ -302,8 +302,8 @@
 </div>
 </div>
 <div class="city-first-card" data-aos="fade-down" data-aos-duration="2000">
-<div class="city-list">
-<div class="city-img">
+    <div class="city-list">
+    <div class="city-img">
 <img src="Front/assets/img/city/city-1.jpg" alt="City">
 </div>
 <div class="city-name">
@@ -315,7 +315,7 @@
 </div>
 </div>
 <div class="city-list">
-<div class="city-img">
+    <div class="city-img">
 <img src="Front/assets/img/city/city-2.jpg" alt="City">
 </div>
 <div class="city-name">
@@ -335,8 +335,8 @@
 
 
 <section class="feature-property-sec for-rent">
-<div class="container">
-<div class="section-heading text-center">
+    <div class="container">
+    <div class="section-heading text-center">
 <h2>Featured Properties for Rent</h2>
 <div class="sec-line">
 <span class="sec-line1"></span>
@@ -345,12 +345,12 @@
 <p>Hand-picked selection of quality places</p>
 </div>
 <div class="row justify-content-center">
-<div class="col-md-12">
-<div class="feature-slider owl-carousel">
-<div class="slider-col">
-<div class="product-custom" data-aos="fade-down" data-aos-duration="2000">
-<div class="profile-widget">
-<div class="doc-img">
+    <div class="col-md-12">
+    <div class="feature-slider owl-carousel">
+    <div class="slider-col">
+    <div class="product-custom" data-aos="fade-down" data-aos-duration="2000">
+    <div class="profile-widget">
+    <div class="doc-img">
 <a href="rent-details.html" class="property-img">
 <img class="img-fluid" alt="Property Image" src="Front/assets/img/product/product-6.jpg">
 </a>
@@ -364,13 +364,13 @@
 <span>New</span>
 </div>
 <a href="javascript:void(0)">
-<div class="favourite selected">
+    <div class="favourite selected">
 <span><i class="fa-regular fa-heart"></i></span>
 </div>
 </a>
 </div>
 <div class="pro-content">
-<div class="rating">
+    <div class="rating">
 <span class="rating-count">
 <i class="fa-solid fa-star checked"></i>
 <i class="fa-solid fa-star checked"></i>
@@ -414,8 +414,8 @@
 </div>
 </div>
 <div class="product-custom" data-aos="fade-down" data-aos-duration="2000">
-<div class="profile-widget">
-<div class="doc-img">
+    <div class="profile-widget">
+    <div class="doc-img">
 <a href="rent-details.html" class="property-img">
 <img class="img-fluid" alt="Property Image" src="Front/assets/img/product/product-7.jpg">
 </a>
@@ -426,13 +426,13 @@
 <span>Featured</span>
 </div>
 <a href="javascript:void(0)">
-<div class="favourite">
+    <div class="favourite">
 <span><i class="fa-regular fa-heart"></i></span>
 </div>
 </a>
 </div>
 <div class="pro-content">
-<div class="rating">
+    <div class="rating">
 <span class="rating-count">
 <i class="fa-solid fa-star checked"></i>
 <i class="fa-solid fa-star checked"></i>
@@ -477,9 +477,9 @@
 </div>
 </div>
 <div class="slider-col">
-<div class="product-custom" data-aos="fade-down" data-aos-duration="2000">
-<div class="profile-widget">
-<div class="doc-img">
+    <div class="product-custom" data-aos="fade-down" data-aos-duration="2000">
+    <div class="profile-widget">
+    <div class="doc-img">
 <a href="rent-details.html" class="property-img">
 <img class="img-fluid" alt="Property Image" src="Front/assets/img/product/product-8.jpg">
 </a>
@@ -490,13 +490,13 @@
 <span>Featured</span>
 </div>
 <a href="javascript:void(0)">
-<div class="favourite selected">
+    <div class="favourite selected">
 <span><i class="fa-regular fa-heart"></i></span>
 </div>
 </a>
 </div>
 <div class="pro-content">
-<div class="rating">
+    <div class="rating">
 <span class="rating-count">
 <i class="fa-solid fa-star checked"></i>
 <i class="fa-solid fa-star checked"></i>
@@ -540,8 +540,8 @@
 </div>
 </div>
 <div class="product-custom" data-aos="fade-down" data-aos-duration="2000">
-<div class="profile-widget">
-<div class="doc-img">
+    <div class="profile-widget">
+    <div class="doc-img">
 <a href="rent-details.html" class="property-img">
 <img class="img-fluid" alt="Property Image" src="Front/assets/img/product/product-9.jpg">
 </a>
@@ -552,13 +552,13 @@
 <span>Featured</span>
 </div>
 <a href="javascript:void(0)">
-<div class="favourite">
+    <div class="favourite">
 <span><i class="fa-regular fa-heart"></i></span>
 </div>
 </a>
 </div>
 <div class="pro-content">
-<div class="rating">
+    <div class="rating">
 <span class="rating-count">
 <i class="fa-solid fa-star checked"></i>
 <i class="fa-solid fa-star checked"></i>
@@ -603,9 +603,9 @@
 </div>
 </div>
 <div class="slider-col">
-<div class="product-custom" data-aos="fade-down" data-aos-duration="2000">
-<div class="profile-widget">
-<div class="doc-img">
+    <div class="product-custom" data-aos="fade-down" data-aos-duration="2000">
+    <div class="profile-widget">
+    <div class="doc-img">
 <a href="rent-details.html" class="property-img">
 <img class="img-fluid" alt="Property Image" src="Front/assets/img/product/product-10.jpg">
 </a>
@@ -616,13 +616,13 @@
 <span>Featured</span>
 </div>
 <a href="javascript:void(0)">
-<div class="favourite">
+    <div class="favourite">
 <span><i class="fa-regular fa-heart"></i></span>
 </div>
 </a>
 </div>
 <div class="pro-content">
-<div class="rating">
+    <div class="rating">
 <span class="rating-count">
 <i class="fa-solid fa-star checked"></i>
 <i class="fa-solid fa-star checked"></i>
@@ -666,8 +666,8 @@
 </div>
 </div>
 <div class="product-custom" data-aos="fade-down" data-aos-duration="2000">
-<div class="profile-widget">
-<div class="doc-img">
+    <div class="profile-widget">
+    <div class="doc-img">
 <a href="rent-details.html" class="property-img">
 <img class="img-fluid" alt="Property Image" src="Front/assets/img/product/product-11.jpg">
 </a>
@@ -678,13 +678,13 @@
 <span>Featured</span>
 </div>
 <a href="javascript:void(0)">
-<div class="favourite">
+    <div class="favourite">
 <span><i class="fa-regular fa-heart"></i></span>
 </div>
 </a>
 </div>
 <div class="pro-content">
-<div class="rating">
+    <div class="rating">
 <span class="rating-count">
 <i class="fa-solid fa-star checked"></i>
 <i class="fa-solid fa-star checked"></i>
@@ -729,9 +729,9 @@
 </div>
 </div>
 <div class="slider-col">
-<div class="product-custom" data-aos="fade-down" data-aos-duration="2000">
-<div class="profile-widget">
-<div class="doc-img">
+    <div class="product-custom" data-aos="fade-down" data-aos-duration="2000">
+    <div class="profile-widget">
+    <div class="doc-img">
 <a href="rent-details.html" class="property-img">
 <img class="img-fluid" alt="Property Image" src="Front/assets/img/product/product-7.jpg">
 </a>
@@ -1743,23 +1743,22 @@
 </div>
 
 
-<script src="Front/assets/js/jquery-3.6.4.min.js"></script>
+<script src="{{ asset('Front/assets/js/jquery-3.6.4.min.js') }}"></script>
 
-<script src="Front/assets/js/bootstrap.bundle.min.js"></script>
+<script src="{{ asset('Front/assets/js/bootstrap.bundle.min.js') }}"></script>
 
-<script src="Front/assets/js/feather.min.js"></script>
+<script src="{{ asset('Front/assets/js/feather.min.js') }}"></script>
 
-<script src="Front/assets/js/owl.carousel.min.js"></script>
+<script src="{{ asset('Front/assets/js/owl.carousel.min.js') }}"></script>
 
-<script src="Front/assets/js/aos.js"></script>
+<script src="{{ asset('Front/assets/js/aos.js') }}"></script>
 
-<script src="Front/assets/plugins/select2/js/select2.min.js"></script>
+<script src="{{ asset('Front/assets/plugins/select2/js/select2.min.js') }}"></script>
 
-<script src="Front/assets/js/waypoints.js"></script>
-<script src="Front/assets/js/jquery.counterup.min.js"></script>
+<script src="{{ asset('Front/assets/js/waypoints.js') }}"></script>
+<script src="{{ asset('Front/assets/js/jquery.counterup.min.js') }}"></script>
 
-<script src="Front/assets/js/script.js"></script>
+<script src="{{ asset('Front/assets/js/script.js') }}"></script>
 </body>
 
-<!-- Mirrored from dreamsestate.dreamguystech.com/html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 05 Sep 2023 13:37:29 GMT -->
 </html>
