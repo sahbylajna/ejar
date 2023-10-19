@@ -23690,3 +23690,27 @@ Did you mean one of these?
 #54 C:\\xampp\\htdocs\\ejar.qa\\ejar\\server.php(21): require_once('C:\\\\xampp\\\\htdocs...')
 #55 {main}
 "} 
+[2023-10-06 10:38:14] local.ERROR: Cannot declare class App\Models\slider, because the name is already in use {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot declare class App\\Models\\slider, because the name is already in use at C:\\xampp\\htdocs\\ejar.qa\\ejar\\app\\Models\\slider-1.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2023-10-06 10:38:21] local.ERROR: Cannot declare class App\Http\Controllers\Api\FavoritesController, because the name is already in use {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot declare class App\\Http\\Controllers\\Api\\FavoritesController, because the name is already in use at C:\\xampp\\htdocs\\ejar.qa\\ejar\\app\\Http\\Controllers\\company\\FavoritesController.php:18)
+[stacktrace]
+#0 {main}
+"} 
+[2023-10-06 10:38:31] local.ERROR: Cannot declare class App\Http\Controllers\Api\FavoritesController, because the name is already in use {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot declare class App\\Http\\Controllers\\Api\\FavoritesController, because the name is already in use at C:\\xampp\\htdocs\\ejar.qa\\ejar\\app\\Http\\Controllers\\company\\FavoritesController.php:18)
+[stacktrace]
+#0 {main}
+"} 
+[2023-10-06 10:38:35] local.ERROR: Cannot declare class App\Http\Controllers\Api\FavoritesController, because the name is already in use {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot declare class App\\Http\\Controllers\\Api\\FavoritesController, because the name is already in use at C:\\xampp\\htdocs\\ejar.qa\\ejar\\app\\Http\\Controllers\\company\\FavoritesController.php:18)
+[stacktrace]
+#0 {main}
+"} 
+[2023-10-17 12:42:11] local.ERROR: Cannot declare class App\Models\slider, because the name is already in use {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot declare class App\\Models\\slider, because the name is already in use at C:\\xampp\\htdocs\\ejar.qa\\ejar\\app\\Models\\slider-1.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2023-10-17 12:42:25] local.ERROR: Cannot declare class App\Http\Controllers\Api\FavoritesController, because the name is already in use {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot declare class App\\Http\\Controllers\\Api\\FavoritesController, because the name is already in use at C:\\xampp\\htdocs\\ejar.qa\\ejar\\app\\Http\\Controllers\\company\\FavoritesController.php:18)
+[stacktrace]
+#0 {main}
+"} 
